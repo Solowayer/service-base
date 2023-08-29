@@ -8,6 +8,7 @@ export const buttonStyles = cva(
 		'inline-flex items-center',
 		'relative',
 		'select-none',
+		'outline-none',
 		'font-medium',
 		'disabled:bg-gray-200',
 		'disabled:text-gray-400',
