@@ -17,10 +17,8 @@ export const buttonStyles = cva(
 	{
 		variants: {
 			variant: {
-				primary: 'bg-black text-white hover:bg-zinc-800 active:bg-zinc-600',
-				secondary: 'bg-white text-black hover:bg-zinc-100 active:bg-zinc-200 border',
-				danger: 'text-white bg-red-700 hover:bg-red-800 active:bg-red-900',
-				positive: 'text-white bg-green-600 hover:bg-green-700 active:bg-green-800'
+				primary: 'bg-button-primary text-inverted hover:bg-button-primary-hover active:bg-button-primary-active',
+				ghost: 'bg-button-ghost text-primary hover:bg-button-ghost-hover active:bg-button-ghost-active'
 			},
 			align: {
 				start: 'justify-start',

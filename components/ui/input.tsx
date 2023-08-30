@@ -6,33 +6,38 @@ export const inputStyles = cva(
 	[
 		'w-full',
 		'outline-none',
-		'border-2',
 		'px-4',
-		'focus:bg-zinc-50',
-		'focus:border-black',
-		'disabled:bg-gray-200',
-		'disabled:text-gray-400',
-		'disabled:hover:cursor-not-allowed',
-		'rounded',
 		'overflow',
 		'text-md',
-		'transition-all'
+		'border-2',
+		'border-transparent',
+		'hover:border-primary',
+		'focus:border-selected',
+		'focus:bg-input-primary-focus',
+		'disabled:bg-disabled',
+		'disabled:text-disabled',
+		'disabled:hover:cursor-not-allowed'
 	],
 	{
 		variants: {
 			variant: {
-				primary: 'bg-zinc-50',
-				error: 'bg-red-100 border-red-300',
-				success: 'bg-green-100 border-green-300'
+				primary: 'bg-input-primary',
+				error: 'bg-danger-light !border-danger',
+				success: 'bg-positive-light !border-positive'
 			},
 			size: {
 				default: 'h-10',
 				large: 'h-12'
+			},
+			shape: {
+				rectangle: 'rounded',
+				round: 'rounded-full'
 			}
 		},
 		defaultVariants: {
 			variant: 'primary',
-			size: 'default'
+			size: 'default',
+			shape: 'rectangle'
 		}
 	}
 )
@@ -50,23 +55,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 	ref
 ) {
 	return (
-		<div className={`${fullWidth && 'w-full'} inline-flex flex-col`}>
-			{label && (
-				<label className={`text-md mb-2`} htmlFor={id}>
-					{label}
-				</label>
-			)}
-			<div className="inline-flex w-full relative items-center">
-				{icon && <div className="absolute left-4">{icon}</div>}
-				<input
-					ref={ref}
-					className={`${inputStyles({ variant, size })} ${icon && '!pl-12'}`}
-					id={id}
-					type={type}
-					placeholder={placeholder}
-					{...props}
-				/>
-			</div>
+		<div className={`${fullWidth && 'w-full'} inline-flex w-full relative items-center`}>
+			{icon && <div className={`absolute left-4 ${props.disabled && 'text-disabled'}`}>{icon}</div>}
+			<input
+				ref={ref}
+				className={`${inputStyles({ variant, size })} ${icon && '!pl-12'}`}
+				id={id}
+				type={type}
+				placeholder={placeholder}
+				{...props}
+			/>
 		</div>
 	)
 })
