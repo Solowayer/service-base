@@ -1,5 +1,3 @@
-'use client'
-
 import React, { forwardRef } from 'react'
 import Link, { LinkProps } from 'next/link'
 import { ButtonProps } from './button'
