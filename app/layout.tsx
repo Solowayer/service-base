@@ -1,4 +1,4 @@
-import SiteHeader from '@/components/layouts/side-header'
+import SiteHeader from '@/components/layouts/site-header'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
