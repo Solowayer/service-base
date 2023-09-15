@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Sun, Moon } from './icons'
-import { Button } from './ui/button'
+import { Sun, Moon } from '../icons'
+import { Button } from '../ui/button'
 
 export default function ThemeSwitcher() {
 	const [dark, setDark] = useState<boolean>(false)

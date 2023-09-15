@@ -3,7 +3,7 @@ import { Input } from '../ui/input'
 import { Menu, ExpandMore, Search, Person, Cart } from '../icons'
 import { Button } from '../ui/button'
 import { ButtonLink } from '../ui/button-link'
-import ThemeSwitcher from '../theme-switcher'
+import ThemeSwitcher from './theme-toggle'
 
 type Props = {
 	user: boolean
