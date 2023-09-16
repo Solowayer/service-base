@@ -68,129 +68,127 @@ const config: Config = {
 			'5xl': ['48px', '56px']
 		},
 		colors: {
-			transparent: 'var(--color-transparent)',
-			white: 'var(--color-white)',
-			black: 'var(--color-black)',
+			transparent: 'rgba(var(--color-transparent), <alpha-value>)',
+			white: 'rgba(var(--color-white), <alpha-value>)',
+			black: 'rgba(var(--color-black), <alpha-value>)',
 			gray: {
-				50: 'var(--color-gray-50)',
-				100: 'var(--color-gray-100)',
-				200: 'var(--color-gray-200)',
-				300: 'var(--color-gray-300)',
-				400: 'var(--color-gray-400)',
-				500: 'var(--color-gray-500)',
-				600: 'var(--color-gray-600)',
-				700: 'var(--color-gray-700)',
-				800: 'var(--color-gray-800)',
-				900: 'var(--color-gray-900)'
+				50: 'rgba(var(--color-gray-50), <alpha-value>)',
+				100: 'rgba(var(--color-gray-100), <alpha-value>)',
+				200: 'rgba(var(--color-gray-200), <alpha-value>)',
+				300: 'rgba(var(--color-gray-300), <alpha-value>)',
+				400: 'rgba(var(--color-gray-400), <alpha-value>)',
+				500: 'rgba(var(--color-gray-500), <alpha-value>)',
+				600: 'rgba(var(--color-gray-600), <alpha-value>)',
+				700: 'rgba(var(--color-gray-700), <alpha-value>)',
+				800: 'rgba(var(--color-gray-800), <alpha-value>)',
+				900: 'rgba(var(--color-gray-900), <alpha-value>)'
 			},
 			red: {
-				50: 'var(--color-red-50)',
-				100: 'var(--color-red-100)',
-				200: 'var(--color-red-200)',
-				300: 'var(--color-red-300)',
-				400: 'var(--color-red-400)',
-				500: 'var(--color-red-500)',
-				600: 'var(--color-red-600)',
-				700: 'var(--color-red-700)'
+				50: 'rgba(var(--color-red-50), <alpha-value>)',
+				100: 'rgba(var(--color-red-100), <alpha-value>)',
+				200: 'rgba(var(--color-red-200), <alpha-value>)',
+				300: 'rgba(var(--color-red-300), <alpha-value>)',
+				400: 'rgba(var(--color-red-400), <alpha-value>)',
+				500: 'rgba(var(--color-red-500), <alpha-value>)',
+				600: 'rgba(var(--color-red-600), <alpha-value>)',
+				700: 'rgba(var(--color-red-700), <alpha-value>)'
 			},
 			orange: {
-				50: 'var(--color-orange-50)',
-				100: 'var(--color-orange-100)',
-				200: 'var(--color-orange-200)',
-				300: 'var(--color-orange-300)',
-				400: 'var(--color-orange-400)',
-				500: 'var(--color-orange-500)',
-				600: 'var(--color-orange-600)',
-				700: 'var(--color-orange-700)',
-				800: 'var(--color-orange-800)',
-				900: 'var(--color-orange-900)'
+				50: 'rgba(var(--color-orange-50), <alpha-value>)',
+				100: 'rgba(var(--color-orange-100), <alpha-value>)',
+				200: 'rgba(var(--color-orange-200), <alpha-value>)',
+				300: 'rgba(var(--color-orange-300), <alpha-value>)',
+				400: 'rgba(var(--color-orange-400), <alpha-value>)',
+				500: 'rgba(var(--color-orange-500), <alpha-value>)',
+				600: 'rgba(var(--color-orange-600), <alpha-value>)',
+				700: 'rgba(var(--color-orange-700), <alpha-value>)',
+				800: 'rgba(var(--color-orange-800), <alpha-value>)',
+				900: 'rgba(var(--color-orange-900), <alpha-value>)'
 			},
 			green: {
-				50: 'var(--color-green-50)',
-				100: 'var(--color-green-100)',
-				200: 'var(--color-green-200)',
-				300: 'var(--color-green-300)',
-				400: 'var(--color-green-400)',
-				500: 'var(--color-green-500)',
-				600: 'var(--color-green-600)',
-				700: 'var(--color-green-700)',
-				800: 'var(--color-green-800)',
-				900: 'var(--color-green-900)'
+				50: 'rgba(var(--color-green-50), <alpha-value>)',
+				100: 'rgba(var(--color-green-100), <alpha-value>)',
+				200: 'rgba(var(--color-green-200), <alpha-value>)',
+				300: 'rgba(var(--color-green-300), <alpha-value>)',
+				400: 'rgba(var(--color-green-400), <alpha-value>)',
+				500: 'rgba(var(--color-green-500), <alpha-value>)',
+				600: 'rgba(var(--color-green-600), <alpha-value>)',
+				700: 'rgba(var(--color-green-700), <alpha-value>)',
+				800: 'rgba(var(--color-green-800), <alpha-value>)',
+				900: 'rgba(var(--color-green-900), <alpha-value>)'
 			},
 			blue: {
-				50: 'var(--color-blue-50)',
-				100: 'var(--color-blue-100)',
-				200: 'var(--color-blue-200)',
-				300: 'var(--color-blue-300)',
-				400: 'var(--color-blue-400)',
-				500: 'var(--color-blue-500)',
-				600: 'var(--color-blue-600)',
-				700: 'var(--color-blue-700)',
-				800: 'var(--color-blue-800)',
-				900: 'var(--color-blue-900)'
+				50: 'rgba(var(--color-blue-50), <alpha-value>)',
+				100: 'rgba(var(--color-blue-100), <alpha-value>)',
+				200: 'rgba(var(--color-blue-200), <alpha-value>)',
+				300: 'rgba(var(--color-blue-300), <alpha-value>)',
+				400: 'rgba(var(--color-blue-400), <alpha-value>)',
+				500: 'rgba(var(--color-blue-500), <alpha-value>)',
+				600: 'rgba(var(--color-blue-600), <alpha-value>)',
+				700: 'rgba(var(--color-blue-700), <alpha-value>)',
+				800: 'rgba(var(--color-blue-800), <alpha-value>)',
+				900: 'rgba(var(--color-blue-900), <alpha-value>)'
 			}
 		},
 		textColor: ({ theme }) => ({
 			...theme('colors'),
-			primary: 'var(--color-text-primary)',
-			inverted: 'var(--color-text-inverted)',
-			accent: 'var(--color-text-accent)',
-			positive: 'var(--color-text-positive)',
-			warning: 'var(--color-text-warning)',
-			danger: 'var(--color-text-danger)',
-			disabled: 'var(--color-text-disabled)'
+			primary: 'rgba(var(--color-text-primary), <alpha-value>)',
+			inverted: 'rgba(var(--color-text-inverted), <alpha-value>)',
+			accent: 'rgba(var(--color-text-accent), <alpha-value>)',
+			positive: 'rgba(var(--color-text-positive), <alpha-value>)',
+			warning: 'rgba(var(--color-text-warning), <alpha-value>)',
+			danger: 'rgba(var(--color-text-danger), <alpha-value>)',
+			disabled: 'rgba(var(--color-text-disabled), <alpha-value>)'
 		}),
 		borderColor: {
-			DEFAULT: 'var(--color-border-primary)',
-			transparent: 'var(--color-border-transparent)',
-			selected: 'var(--color-border-selected)',
-			accent: 'var(--color-border-accent)',
-			positive: 'var(--color-border-positive)',
-			warning: 'var(--color-border-warning)',
-			danger: 'var(--color-border-danger)'
+			DEFAULT: 'rgba(var(--color-border-primary), <alpha-value>)',
+			transparent: 'rgba(var(--color-border-transparent), <alpha-value>)',
+			selected: 'rgba(var(--color-border-selected), <alpha-value>)',
+			accent: 'rgba(var(--color-border-accent), <alpha-value>)',
+			positive: 'rgba(var(--color-border-positive), <alpha-value>)',
+			warning: 'rgba(var(--color-border-warning), <alpha-value>)',
+			danger: 'rgba(var(--color-border-danger), <alpha-value>)'
 		},
 		backgroundColor: ({ theme }) => ({
 			...theme('colors'),
-			accent: 'var(--color-background-accent)',
-			positive: 'var(--color-background-positive)',
-			warning: 'var(--color-background-warning)',
-			danger: 'var(--color-background-danger)',
-			'accent-light': 'var(--color-background-accent-light)',
-			'positive-light': 'var(--color-background-positive-light)',
-			'warning-light': 'var(--color-background-warning-light)',
-			'danger-light': 'var(--color-background-danger-light)',
-			'interactive-hover': 'var(--color-background-interactive-hover)',
-			'interactive-active': 'var(--color-background-interactive-active)',
-			'interactive-selected': 'var(--color-background-interactive-selected)',
-			disabled: 'var(--color-background-disabled)',
-
+			accent: 'rgba(var(--color-background-accent), <alpha-value>)',
+			positive: 'rgba(var(--color-background-positive), <alpha-value>)',
+			warning: 'rgba(var(--color-background-warning), <alpha-value>)',
+			danger: 'rgba(var(--color-background-danger), <alpha-value>)',
+			'accent-light': 'rgba(var(--color-background-accent-light), <alpha-value>)',
+			'positive-light': 'rgba(var(--color-background-positive-light), <alpha-value>)',
+			'warning-light': 'rgba(var(--color-background-warning-light), <alpha-value>)',
+			'danger-light': 'rgba(var(--color-background-danger-light), <alpha-value>)',
+			'interactive-hover': 'rgba(var(--color-background-interactive-hover), <alpha-value>)',
+			'interactive-active': 'rgba(var(--color-background-interactive-active), <alpha-value>)',
+			'interactive-selected': 'rgba(var(--color-background-interactive-selected), <alpha-value>)',
+			disabled: 'rgba(var(--color-background-disabled), <alpha-value>)',
 			surface: {
-				primary: 'var(--color-surface-primary)',
-				secondary: 'var(--color-surface-primary)',
-				overlay: 'var(--color-surface-primary)'
+				primary: 'rgba(var(--color-surface-primary), <alpha-value>)',
+				secondary: 'rgba(var(--color-surface-primary), <alpha-value>)',
+				overlay: 'rgba(var(--color-surface-primary), <alpha-value>)'
 			},
-
 			button: {
 				primary: {
-					DEFAULT: 'var(--color-button-primary)',
-					hover: 'var(--color-button-primary-hover)',
-					active: 'var(--color-button-primary-active)'
+					DEFAULT: 'rgba(var(--color-button-primary), <alpha-value>)',
+					hover: 'rgba(var(--color-button-primary-hover), <alpha-value>)',
+					active: 'rgba(var(--color-button-primary-active), <alpha-value>)'
 				},
 				ghost: {
-					DEFAULT: 'var(--color-button-ghost)',
-					hover: 'var(--color-button-ghost-hover)',
-					active: 'var(--color-button-ghost-active)'
+					DEFAULT: 'rgba(var(--color-button-ghost), <alpha-value>)',
+					hover: 'rgba(var(--color-button-ghost-hover), <alpha-value>)',
+					active: 'rgba(var(--color-button-ghost-active), <alpha-value>)'
 				}
 			},
 			input: {
 				primary: {
-					DEFAULT: 'var(--color-input-primary)',
-					focus: 'var(--color-input-primary-focus)'
+					DEFAULT: 'rgba(var(--color-input-primary), <alpha-value>)',
+					focus: 'rgba(var(--color-input-primary-focus), <alpha-value>)'
 				}
 			}
 		})
 	},
-
 	plugins: []
 }
+
 export default config

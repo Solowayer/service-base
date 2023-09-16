@@ -15,11 +15,7 @@ const DialogOverlay = React.forwardRef<
 	React.ElementRef<typeof DialogPrimitive.Overlay>,
 	React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
-	<DialogPrimitive.Overlay
-		ref={ref}
-		className="fixed inset-0 z-50 bg-black/30 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
-		{...props}
-	/>
+	<DialogPrimitive.Overlay ref={ref} className="fixed inset-0 z-50 bg-black/40" {...props} />
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
@@ -37,9 +33,7 @@ type DialogContentProps = {
 const DialogDescription = React.forwardRef<
 	React.ElementRef<typeof DialogPrimitive.Description>,
 	React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
->(({ className, ...props }, ref) => (
-	<DialogPrimitive.Description ref={ref} className="text-sm text-zinc-600" {...props} />
-))
+>(({ className, ...props }, ref) => <DialogPrimitive.Description ref={ref} className="text text-zinc-600" {...props} />)
 DialogDescription.displayName = DialogPrimitive.Description.displayName
 
 const DialogContent = React.forwardRef<
@@ -58,7 +52,7 @@ const DialogContent = React.forwardRef<
 					<DialogTitle>{title}</DialogTitle>
 					<DialogDescription>{description}</DialogDescription>
 				</div>
-				<DialogPrimitive.Close className={`${buttonStyles({ variant: 'ghost', shape: 'circle' })}`}>
+				<DialogPrimitive.Close className={`${buttonStyles({ variant: 'ghost', shape: 'round', size: 'icon-medium' })}`}>
 					<Close />
 					<span className="sr-only">Close</span>
 				</DialogPrimitive.Close>

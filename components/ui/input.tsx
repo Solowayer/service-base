@@ -47,7 +47,7 @@ export interface InputProps
 		VariantProps<typeof inputStyles> {
 	label?: string
 	icon?: React.ReactNode
-	fullWidth: boolean
+	fullWidth?: boolean
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
