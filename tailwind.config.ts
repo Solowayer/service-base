@@ -7,6 +7,50 @@ const config: Config = {
 		'./app/**/*.{js,ts,jsx,tsx,mdx}'
 	],
 	theme: {
+		spacing: {
+			px: '1px',
+			0: '0',
+			0.5: '0.125rem',
+			1: '0.25rem',
+			1.5: '0.375rem',
+			2: '0.5rem',
+			2.5: '0.625rem',
+			3: '0.75rem',
+			3.5: '0.875rem',
+			4: '1rem',
+			5: '1.25rem',
+			6: '1.5rem',
+			7: '1.75rem',
+			8: '2rem',
+			9: '2.25rem',
+			10: '2.5rem',
+			11: '2.75rem',
+			12: '3rem',
+			14: '3.5rem',
+			16: '4rem',
+			20: '5rem',
+			24: '6rem',
+			28: '7rem',
+			32: '8rem',
+			36: '9rem',
+			40: '10rem',
+			44: '11rem',
+			48: '12rem',
+			52: '13rem',
+			56: '14rem',
+			60: '15rem',
+			64: '16rem',
+			72: '18rem',
+			80: '20rem',
+			96: '24rem'
+		},
+		borderRadius: {
+			none: '0',
+			sm: '.125rem',
+			DEFAULT: '.25rem',
+			lg: '.5rem',
+			full: '9999px'
+		},
 		screens: {
 			sm: '480px',
 			md: '768px',
@@ -57,7 +101,9 @@ const config: Config = {
 				400: 'var(--color-orange-400)',
 				500: 'var(--color-orange-500)',
 				600: 'var(--color-orange-600)',
-				700: 'var(--color-orange-700)'
+				700: 'var(--color-orange-700)',
+				800: 'var(--color-orange-800)',
+				900: 'var(--color-orange-900)'
 			},
 			green: {
 				50: 'var(--color-green-50)',
@@ -67,7 +113,9 @@ const config: Config = {
 				400: 'var(--color-green-400)',
 				500: 'var(--color-green-500)',
 				600: 'var(--color-green-600)',
-				700: 'var(--color-green-700)'
+				700: 'var(--color-green-700)',
+				800: 'var(--color-green-800)',
+				900: 'var(--color-green-900)'
 			},
 			blue: {
 				50: 'var(--color-blue-50)',
@@ -77,7 +125,9 @@ const config: Config = {
 				400: 'var(--color-blue-400)',
 				500: 'var(--color-blue-500)',
 				600: 'var(--color-blue-600)',
-				700: 'var(--color-blue-700)'
+				700: 'var(--color-blue-700)',
+				800: 'var(--color-blue-800)',
+				900: 'var(--color-blue-900)'
 			}
 		},
 		textColor: {
@@ -90,7 +140,7 @@ const config: Config = {
 			disabled: 'var(--color-text-disabled)'
 		},
 		borderColor: {
-			primary: 'var(--color-border-primary)',
+			DEFAULT: 'var(--color-border-primary)',
 			transparent: 'var(--color-border-transparent)',
 			selected: 'var(--color-border-selected)',
 			accent: 'var(--color-border-accent)',
@@ -98,7 +148,8 @@ const config: Config = {
 			warning: 'var(--color-border-warning)',
 			danger: 'var(--color-border-danger)'
 		},
-		backgroundColor: {
+		backgroundColor: ({ theme }) => ({
+			...theme('colors'),
 			accent: 'var(--color-background-accent)',
 			positive: 'var(--color-background-positive)',
 			warning: 'var(--color-background-warning)',
@@ -107,6 +158,9 @@ const config: Config = {
 			'positive-light': 'var(--color-background-positive-light)',
 			'warning-light': 'var(--color-background-warning-light)',
 			'danger-light': 'var(--color-background-danger-light)',
+			'interactive-hover': 'var(--color-background-interactive-hover)',
+			'interactive-active': 'var(--color-background-interactive-active)',
+			'interactive-selected': 'var(--color-background-interactive-selected)',
 			disabled: 'var(--color-background-disabled)',
 
 			surface: {
@@ -133,7 +187,7 @@ const config: Config = {
 					focus: 'var(--color-input-primary-focus)'
 				}
 			}
-		}
+		})
 	},
 
 	plugins: []

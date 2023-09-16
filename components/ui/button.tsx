@@ -1,7 +1,8 @@
+import { cn } from '@/lib/utils/cn'
 import { cva, VariantProps } from 'class-variance-authority'
 import React, { forwardRef } from 'react'
 
-export const buttonStyles = cva(
+const buttonStyles = cva(
 	[
 		'inline-flex items-center',
 		'relative',
@@ -26,35 +27,19 @@ export const buttonStyles = cva(
 			size: {
 				small: 'px-3 gap-2 text-sm h-8',
 				medium: 'px-4 gap-3 text-md h-10',
-				large: 'px-5 gap-4 text-lg h-12'
+				large: 'px-5 gap-4 text-lg h-12',
+				'icon-small': 'h-8 w-8',
+				'icon-medium': 'h-10 w-10',
+				'icon-large': 'h-12 w-12'
 			},
 			shape: {
 				rectangle: 'rounded',
-				round: 'rounded-full',
-				square: 'rounded',
-				circle: 'rounded-full'
+				round: 'rounded-full'
 			},
 			fullWidth: {
 				true: 'w-full'
 			}
 		},
-		compoundVariants: [
-			{
-				size: 'small',
-				shape: ['circle', 'square'],
-				className: '!p-2'
-			},
-			{
-				size: 'medium',
-				shape: ['circle', 'square'],
-				className: '!p-2.5'
-			},
-			{
-				size: 'large',
-				shape: ['circle', 'square'],
-				className: '!p-3'
-			}
-		],
 		defaultVariants: {
 			variant: 'primary',
 			align: 'center',
@@ -66,15 +51,19 @@ export const buttonStyles = cva(
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonStyles> {
 	children: React.ReactNode
+	className?: string
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-	{ variant, align, size, shape, fullWidth, children, ...props },
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+	{ variant, align, size, shape, fullWidth, children, className, ...props },
 	ref
 ) {
 	return (
-		<button ref={ref} className={buttonStyles({ variant, align, size, shape, fullWidth })} {...props}>
+		<button ref={ref} className={cn(buttonStyles({ variant, align, size, shape, fullWidth, className }))} {...props}>
 			{children}
 		</button>
 	)
 })
+Button.displayName = 'Button'
+
+export { Button, buttonStyles }

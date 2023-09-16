@@ -118,6 +118,9 @@
 		--color-background-positive-light: var(--color-green-50);
 		--color-background-orange-light: var(--color-orange-50);
 		--color-background-danger-light: var(--color-red-50);
+		--color-background-interactive-hover: var(--color-gray-200);
+		--color-background-interactive-active: var(--color-gray-300);
+		--color-background-interactive-selected: var(--color-black);
 		--color-background-disabled: var(--color-gray-200);
 
 		--color-surface-primary: var(--color-white);
