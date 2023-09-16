@@ -130,7 +130,8 @@ const config: Config = {
 				900: 'var(--color-blue-900)'
 			}
 		},
-		textColor: {
+		textColor: ({ theme }) => ({
+			...theme('colors'),
 			primary: 'var(--color-text-primary)',
 			inverted: 'var(--color-text-inverted)',
 			accent: 'var(--color-text-accent)',
@@ -138,7 +139,7 @@ const config: Config = {
 			warning: 'var(--color-text-warning)',
 			danger: 'var(--color-text-danger)',
 			disabled: 'var(--color-text-disabled)'
-		},
+		}),
 		borderColor: {
 			DEFAULT: 'var(--color-border-primary)',
 			transparent: 'var(--color-border-transparent)',

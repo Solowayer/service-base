@@ -23,12 +23,11 @@ export default function Home() {
 	return (
 		<main className="flex flex-col p-24">
 			<div className="inline-flex">
-				{' '}
 				<Select>
-					<SelectTrigger className="w-[180px]">
+					<SelectTrigger className="w-[280px]">
 						<SelectValue placeholder="Select a fruit" />
 					</SelectTrigger>
-					<SelectContent>
+					<SelectContent position="popper">
 						<SelectGroup>
 							<SelectLabel>Fruits</SelectLabel>
 							<SelectItem value="apple">Apple</SelectItem>
