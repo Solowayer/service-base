@@ -88,4 +88,11 @@ const DialogBody = ({ className, children, ...props }: React.HTMLAttributes<HTML
 )
 DialogBody.displayName = 'DialogBody'
 
-export { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogHeader, DialogBody }
+const DialogFooter = ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+	<div className={cn('flex w-full gap-4 p-4 justify-end', className)} {...props}>
+		{children}
+	</div>
+)
+DialogFooter.displayName = 'DialogFooter'
+
+export { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogBody, DialogFooter }

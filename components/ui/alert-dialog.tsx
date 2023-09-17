@@ -3,6 +3,7 @@
 import * as React from 'react'
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog'
 import { buttonStyles } from './button'
+import { cn } from '@/lib/utils/cn'
 
 const AlertDialog = AlertDialogPrimitive.Root
 
@@ -22,12 +23,15 @@ AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName
 const AlertDialogContent = React.forwardRef<
 	React.ElementRef<typeof AlertDialogPrimitive.Content>,
 	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>
->(({ ...props }, ref) => (
+>(({ className, ...props }, ref) => (
 	<AlertDialogPortal>
 		<AlertDialogOverlay />
 		<AlertDialogPrimitive.Content
 			ref={ref}
-			className="fixed flex flex-col gap-4 top-[50%] z-50 left-[50%] max-h-[85vh] w-[90vw] max-w-[500px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[25px] drop-shadow-lg focus:outline-none"
+			className={cn(
+				'fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] w-full z-50 max-w-lg bg-surface-primary rounded shadow-lg border overflow-hidden data-[state=open]:animate-dialog-scale-in data-[state=closed]:animate-dialog-scale-out',
+				className
+			)}
 			{...props}
 		/>
 	</AlertDialogPortal>
@@ -37,20 +41,47 @@ AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName
 const AlertDialogTitle = React.forwardRef<
 	React.ElementRef<typeof AlertDialogPrimitive.Title>,
 	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>
->(({ ...props }, ref) => <AlertDialogPrimitive.Title ref={ref} className="text-lg font-bold" {...props} />)
+>(({ ...props }, ref) => <AlertDialogPrimitive.Title ref={ref} className="text-xl font-semibold" {...props} />)
 AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName
 
 const AlertDialogDescription = React.forwardRef<
 	React.ElementRef<typeof AlertDialogPrimitive.Description>,
 	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>
->(({ ...props }, ref) => <AlertDialogPrimitive.Description ref={ref} className="text-sm text-zinc-500" {...props} />)
+>(({ ...props }, ref) => <AlertDialogPrimitive.Description ref={ref} className="text-secondary" {...props} />)
 AlertDialogDescription.displayName = AlertDialogPrimitive.Description.displayName
+
+interface AlertDialogHeaderProps {
+	title: string
+	description?: string
+}
+
+const AlertDialogShell = ({
+	className,
+	title,
+	description,
+	...props
+}: React.HTMLAttributes<HTMLDivElement> & AlertDialogHeaderProps) => (
+	<div className="flex items-start justify-between gap-4 p-4" {...props}>
+		<div className="flex flex-col gap-2">
+			<AlertDialogTitle>{title}</AlertDialogTitle>
+			{description && <AlertDialogDescription>{description}</AlertDialogDescription>}
+		</div>
+	</div>
+)
+AlertDialogShell.displayName = 'AlertDialogShell'
+
+const AlertDialogFooter = ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+	<div className={cn('flex w-full gap-4 justify-end p-4', className)} {...props}>
+		{children}
+	</div>
+)
+AlertDialogFooter.displayName = 'AlertDialogFooter'
 
 const AlertDialogAction = React.forwardRef<
 	React.ElementRef<typeof AlertDialogPrimitive.Action>,
 	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>
 >(({ ...props }, ref) => (
-	<AlertDialogPrimitive.Action ref={ref} {...props} className={buttonStyles({ variant: 'primary' })} />
+	<AlertDialogPrimitive.Action ref={ref} {...props} className={cn(buttonStyles({ variant: 'primary' }))} />
 ))
 AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName
 
@@ -58,7 +89,7 @@ const AlertDialogCancel = React.forwardRef<
 	React.ElementRef<typeof AlertDialogPrimitive.Cancel>,
 	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>
 >(({ ...props }, ref) => (
-	<AlertDialogPrimitive.Cancel ref={ref} {...props} className={buttonStyles({ variant: 'ghost' })} />
+	<AlertDialogPrimitive.Cancel ref={ref} {...props} className={cn(buttonStyles({ variant: 'ghost' }))} />
 ))
 AlertDialogCancel.displayName = AlertDialogPrimitive.Cancel.displayName
 
@@ -66,8 +97,8 @@ export {
 	AlertDialog,
 	AlertDialogTrigger,
 	AlertDialogContent,
-	AlertDialogTitle,
-	AlertDialogDescription,
 	AlertDialogAction,
-	AlertDialogCancel
+	AlertDialogCancel,
+	AlertDialogShell,
+	AlertDialogFooter
 }
