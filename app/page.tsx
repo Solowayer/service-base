@@ -39,7 +39,7 @@ export default function Home() {
 							грає волоссям. Це чудовий день для нових пригод і відкриттів. Нехай ваша уява веде вас туди, де ви ніколи
 							не були раніше!
 						</DrawerBody>
-						<DrawerFooter className="absolute bottom-0 w-full">
+						<DrawerFooter>
 							<Button>Aza</Button>
 							<Button>Aza</Button>
 						</DrawerFooter>

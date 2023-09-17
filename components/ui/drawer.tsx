@@ -25,7 +25,7 @@ const DrawerOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<DrawerPrimitive.Overlay
 		className={cn(
-			'fixed inset-0 z-50 bg-black/40 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
+			'fixed inset-0 z-50 bg-black/40 transition data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out',
 			className
 		)}
 		{...props}
@@ -34,22 +34,19 @@ const DrawerOverlay = React.forwardRef<
 ))
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName
 
-const DrawerVariants = cva(
-	'fixed z-50 gap-4 bg-surface-primary shadow-lg overflow-hidden transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
-	{
-		variants: {
-			side: {
-				top: 'inset-x-0 top-0 border-b',
-				bottom: 'inset-x-0 bottom-0 border-t',
-				left: 'inset-y-0 left-0 h-full w-1/3 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left',
-				right: 'inset-y-0 right-0 h-full w-3/4 border-l'
-			}
-		},
-		defaultVariants: {
-			side: 'right'
+const DrawerVariants = cva('fixed z-50 gap-4 bg-surface-primary shadow-lg overflow-hidden transition', {
+	variants: {
+		side: {
+			top: 'inset-x-0 top-0 border-b',
+			bottom: 'inset-x-0 bottom-0 border-t',
+			left: 'inset-y-0 left-0 h-full w-1/3 border-r data-[state=open]:animate-slide-in-left data-[state=closed]:animate-slide-out-left',
+			right: 'inset-y-0 right-0 h-full w-3/4 border-l'
 		}
+	},
+	defaultVariants: {
+		side: 'right'
 	}
-)
+})
 
 const DrawerTitle = React.forwardRef<
 	React.ElementRef<typeof DrawerPrimitive.Title>,
@@ -95,7 +92,7 @@ DrawerHeader.displayName = 'DrawerHeader'
 const DrawerFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
 		className={cn(
-			'flex bg-surface-primary p-4 border flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2',
+			'flex bg-surface-primary p-4 border-t absolute bottom-0 w-full flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2',
 			className
 		)}
 		{...props}

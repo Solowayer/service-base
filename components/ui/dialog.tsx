@@ -43,7 +43,7 @@ const DialogHeader = ({
 	description,
 	...props
 }: React.HTMLAttributes<HTMLDivElement> & DialogHeaderProps) => (
-	<div className="flex items-start justify-between border-b gap-4 p-4 bg-surface-secondary" {...props}>
+	<div className="flex items-start justify-between gap-4 p-4 bg-surface-secondary border-b" {...props}>
 		<div className="flex flex-col gap-2">
 			<DialogTitle>{title}</DialogTitle>
 			{description && <DialogDescription>{description}</DialogDescription>}
@@ -72,7 +72,7 @@ const DialogContent = React.forwardRef<
 		<DialogOverlay />
 		<DialogPrimitive.Content
 			ref={ref}
-			className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] border bg-surface-primary shadow-lg sm:rounded-lg md:w-full overflow-hidden"
+			className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] bg-surface-primary shadow-lg sm:rounded-lg md:w-full border overflow-hidden"
 			{...props}
 		>
 			<div className="max-h-[400px] overflow-y-auto">{children}</div>

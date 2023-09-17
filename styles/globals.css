@@ -100,7 +100,7 @@
 	}
 
 	:root[data-theme='dark'] {
-		--color-border-primary: var(--color-gray-800);
+		--color-border-primary: var(--color-gray-900);
 		--color-border-transparent: var(--color-transparent);
 		--color-border-selected: var(--color-white);
 		--color-border-accent: var(--color-blue-300);
