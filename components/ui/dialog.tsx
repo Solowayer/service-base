@@ -16,9 +16,33 @@ const DialogOverlay = React.forwardRef<
 	React.ElementRef<typeof DialogPrimitive.Overlay>,
 	React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
-	<DialogPrimitive.Overlay ref={ref} className="fixed inset-0 z-50 bg-black/40" {...props} />
+	<DialogPrimitive.Overlay
+		ref={ref}
+		className="fixed inset-0 z-50 bg-surface-overlay/40 data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out"
+		{...props}
+	/>
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
+
+const DialogContent = React.forwardRef<
+	React.ElementRef<typeof DialogPrimitive.Content>,
+	React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+	<DialogPortal>
+		<DialogOverlay />
+		<DialogPrimitive.Content
+			ref={ref}
+			className={cn(
+				'fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] w-full z-50 max-w-lg bg-surface-primary rounded shadow-lg border overflow-hidden data-[state=open]:animate-dialog-scale-in data-[state=closed]:animate-dialog-scale-out',
+				className
+			)}
+			{...props}
+		>
+			<div className="max-h-[400px] overflow-y-auto">{children}</div>
+		</DialogPrimitive.Content>
+	</DialogPortal>
+))
+DialogContent.displayName = DialogPrimitive.Content.displayName
 
 const DialogTitle = React.forwardRef<
 	React.ElementRef<typeof DialogPrimitive.Title>,
@@ -63,22 +87,5 @@ const DialogBody = ({ className, children, ...props }: React.HTMLAttributes<HTML
 	</div>
 )
 DialogBody.displayName = 'DialogBody'
-
-const DialogContent = React.forwardRef<
-	React.ElementRef<typeof DialogPrimitive.Content>,
-	React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-	<DialogPortal>
-		<DialogOverlay />
-		<DialogPrimitive.Content
-			ref={ref}
-			className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] bg-surface-primary shadow-lg sm:rounded-lg md:w-full border overflow-hidden"
-			{...props}
-		>
-			<div className="max-h-[400px] overflow-y-auto">{children}</div>
-		</DialogPrimitive.Content>
-	</DialogPortal>
-))
-DialogContent.displayName = DialogPrimitive.Content.displayName
 
 export { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogHeader, DialogBody }

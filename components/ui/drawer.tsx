@@ -25,7 +25,7 @@ const DrawerOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<DrawerPrimitive.Overlay
 		className={cn(
-			'fixed inset-0 z-50 bg-black/40 transition data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out',
+			'fixed inset-0 z-50 bg-surface-overlay/40 data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out',
 			className
 		)}
 		{...props}
@@ -34,7 +34,7 @@ const DrawerOverlay = React.forwardRef<
 ))
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName
 
-const DrawerVariants = cva('fixed z-50 gap-4 bg-surface-primary shadow-lg overflow-hidden transition', {
+const DrawerVariants = cva('fixed z-50 gap-4 bg-surface-primary shadow-lg overflow-hidden', {
 	variants: {
 		side: {
 			top: 'inset-x-0 top-0 border-b',
@@ -47,6 +47,22 @@ const DrawerVariants = cva('fixed z-50 gap-4 bg-surface-primary shadow-lg overfl
 		side: 'right'
 	}
 })
+
+interface DrawerContentProps
+	extends React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>,
+		VariantProps<typeof DrawerVariants> {}
+
+const DrawerContent = React.forwardRef<React.ElementRef<typeof DrawerPrimitive.Content>, DrawerContentProps>(
+	({ side = 'right', className, children, ...props }, ref) => (
+		<DrawerPortal>
+			<DrawerOverlay />
+			<DrawerPrimitive.Content ref={ref} className={cn(DrawerVariants({ side }), className)} {...props}>
+				{children}
+			</DrawerPrimitive.Content>
+		</DrawerPortal>
+	)
+)
+DrawerContent.displayName = DrawerPrimitive.Content.displayName
 
 const DrawerTitle = React.forwardRef<
 	React.ElementRef<typeof DrawerPrimitive.Title>,
@@ -106,22 +122,6 @@ const DrawerBody = ({ className, children, ...props }: React.HTMLAttributes<HTML
 	</div>
 )
 DrawerBody.displayName = 'DrawerBody'
-
-interface DrawerContentProps
-	extends React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>,
-		VariantProps<typeof DrawerVariants> {}
-
-const DrawerContent = React.forwardRef<React.ElementRef<typeof DrawerPrimitive.Content>, DrawerContentProps>(
-	({ side = 'right', className, children, ...props }, ref) => (
-		<DrawerPortal>
-			<DrawerOverlay />
-			<DrawerPrimitive.Content ref={ref} className={cn(DrawerVariants({ side }), className)} {...props}>
-				{children}
-			</DrawerPrimitive.Content>
-		</DrawerPortal>
-	)
-)
-DrawerContent.displayName = DrawerPrimitive.Content.displayName
 
 export {
 	Drawer,
