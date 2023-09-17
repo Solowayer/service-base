@@ -17,7 +17,7 @@ export default function ThemeSwitcher() {
 
 	return (
 		<>
-			<Button onClick={toggleTheme} shape="square" variant="ghost">
+			<Button onClick={toggleTheme} variant="ghost" size="icon-medium">
 				{dark ? <Sun className="text-warning" /> : <Moon className="text-accent" />}
 			</Button>
 		</>

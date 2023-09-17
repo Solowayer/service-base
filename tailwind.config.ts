@@ -133,6 +133,7 @@ const config: Config = {
 		textColor: ({ theme }) => ({
 			...theme('colors'),
 			primary: 'rgba(var(--color-text-primary), <alpha-value>)',
+			secondary: 'rgba(var(--color-text-secondary), <alpha-value>)',
 			inverted: 'rgba(var(--color-text-inverted), <alpha-value>)',
 			accent: 'rgba(var(--color-text-accent), <alpha-value>)',
 			positive: 'rgba(var(--color-text-positive), <alpha-value>)',
@@ -140,7 +141,8 @@ const config: Config = {
 			danger: 'rgba(var(--color-text-danger), <alpha-value>)',
 			disabled: 'rgba(var(--color-text-disabled), <alpha-value>)'
 		}),
-		borderColor: {
+		borderColor: ({ theme }) => ({
+			...theme('colors'),
 			DEFAULT: 'rgba(var(--color-border-primary), <alpha-value>)',
 			transparent: 'rgba(var(--color-border-transparent), <alpha-value>)',
 			selected: 'rgba(var(--color-border-selected), <alpha-value>)',
@@ -148,7 +150,7 @@ const config: Config = {
 			positive: 'rgba(var(--color-border-positive), <alpha-value>)',
 			warning: 'rgba(var(--color-border-warning), <alpha-value>)',
 			danger: 'rgba(var(--color-border-danger), <alpha-value>)'
-		},
+		}),
 		backgroundColor: ({ theme }) => ({
 			...theme('colors'),
 			accent: 'rgba(var(--color-background-accent), <alpha-value>)',
@@ -165,8 +167,8 @@ const config: Config = {
 			disabled: 'rgba(var(--color-background-disabled), <alpha-value>)',
 			surface: {
 				primary: 'rgba(var(--color-surface-primary), <alpha-value>)',
-				secondary: 'rgba(var(--color-surface-primary), <alpha-value>)',
-				overlay: 'rgba(var(--color-surface-primary), <alpha-value>)'
+				secondary: 'rgba(var(--color-surface-secondary), <alpha-value>)',
+				overlay: 'rgba(var(--color-surface-overlay), <alpha-value>)'
 			},
 			button: {
 				primary: {
@@ -188,7 +190,7 @@ const config: Config = {
 			}
 		})
 	},
-	plugins: []
+	plugins: [require('tailwindcss-animate')]
 }
 
 export default config

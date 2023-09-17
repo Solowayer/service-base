@@ -1,10 +1,13 @@
+'use client'
+
 import { cn } from '@/lib/utils/cn'
 import { cva, VariantProps } from 'class-variance-authority'
 import React, { forwardRef } from 'react'
 
 const buttonStyles = cva(
 	[
-		'inline-flex items-center',
+		'flex',
+		'items-center',
 		'relative',
 		'select-none',
 		'outline-none',

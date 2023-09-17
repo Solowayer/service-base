@@ -13,7 +13,7 @@ export default function SiteHeader({ user }: Props) {
 	return (
 		<div className="flex items-center h-20 bg-surface-primary border-primary border-b px-10 justify-between gap-4">
 			<div className="flex items-center gap-4">
-				<Button shape="square" variant="ghost">
+				<Button variant="ghost" size="icon-medium">
 					<Menu />
 				</Button>
 				<Link href="/" className="font-bold">
@@ -24,14 +24,14 @@ export default function SiteHeader({ user }: Props) {
 					<ExpandMore />
 				</Button>
 			</div>
-			<ThemeSwitcher />
-			<Input icon={<Search />} shape="round" placeholder="Шукати" fullWidth />
+			<Input icon={<Search />} shape="round" placeholder="Шукати" className="w-[400px]" />
 			<div className="flex items-center gap-4">
+				<ThemeSwitcher />
 				<ButtonLink href="auth/signin">
 					<Person />
 					Увійти
 				</ButtonLink>
-				<Button variant="ghost" shape="square">
+				<Button variant="ghost" size="icon-medium">
 					<Cart />
 				</Button>
 			</div>

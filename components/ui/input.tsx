@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils/cn'
 import { VariantProps, cva } from 'class-variance-authority'
 import React from 'react'
 import { forwardRef } from 'react'
@@ -47,15 +48,14 @@ export interface InputProps
 		VariantProps<typeof inputStyles> {
 	label?: string
 	icon?: React.ReactNode
-	fullWidth?: boolean
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-	{ variant, size, fullWidth, label, icon, id, type = 'text', placeholder = 'Text here...', ...props },
+	{ variant, size, label, icon, id, type = 'text', placeholder = 'Text here...', className, ...props },
 	ref
 ) {
 	return (
-		<div className={`${fullWidth && 'w-full'} inline-flex w-full relative items-center`}>
+		<div className={cn('inline-flex relative items-center', className)}>
 			{icon && <div className={`absolute left-4 ${props.disabled && 'text-disabled'}`}>{icon}</div>}
 			<input
 				ref={ref}
