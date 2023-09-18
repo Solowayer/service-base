@@ -49,8 +49,8 @@ export default function Home() {
 							не були раніше!
 						</DrawerBody>
 						<DrawerFooter>
-							<Button>Aza</Button>
-							<Button>Aza</Button>
+							<Button variant="ghost">Скасувати</Button>
+							<Button>Підтвердити</Button>
 						</DrawerFooter>
 					</DrawerContent>
 				</Drawer>
@@ -67,21 +67,21 @@ export default function Home() {
 							не були раніше!
 						</DialogBody>
 						<DialogFooter>
-							<Button>Підтвердити</Button>
 							<Button variant="ghost">Скасувати</Button>
+							<Button>Підтвердити</Button>
 						</DialogFooter>
 					</DialogContent>
 				</Dialog>
 				<AlertDialog>
-					<AlertDialogTrigger>Open</AlertDialogTrigger>
+					<AlertDialogTrigger>Open Alert Dialog</AlertDialogTrigger>
 					<AlertDialogContent>
 						<AlertDialogShell
 							title="Ви точно дурачок?"
 							description="Якщо ви вкажете що ви дурачок, то вам випишуть справку"
 						/>
 						<AlertDialogFooter>
-							<AlertDialogCancel>Cancel</AlertDialogCancel>
-							<AlertDialogAction>Continue</AlertDialogAction>
+							<AlertDialogCancel>Скасувати</AlertDialogCancel>
+							<AlertDialogAction>Підтвердити</AlertDialogAction>
 						</AlertDialogFooter>
 					</AlertDialogContent>
 				</AlertDialog>

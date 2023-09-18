@@ -12,7 +12,7 @@ export const inputStyles = cva(
 		'text-md',
 		'border-2',
 		'border-transparent',
-		'hover:border-primary',
+		'hover:border',
 		'focus:border-selected',
 		'focus:bg-input-primary-focus',
 		'disabled:bg-disabled',
@@ -23,8 +23,8 @@ export const inputStyles = cva(
 		variants: {
 			variant: {
 				primary: 'bg-input-primary',
-				error: 'bg-danger-light !border-danger',
-				success: 'bg-positive-light !border-positive'
+				error: 'bg-danger-light border-danger',
+				success: 'bg-positive-light border-positive'
 			},
 			size: {
 				default: 'h-10',

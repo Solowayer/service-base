@@ -107,10 +107,7 @@ DrawerHeader.displayName = 'DrawerHeader'
 
 const DrawerFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
-		className={cn(
-			'flex bg-surface-primary p-4 border-t absolute bottom-0 w-full flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2',
-			className
-		)}
+		className={cn('flex justify-end gap-4 bg-surface-primary p-4 border-t absolute bottom-0 w-full', className)}
 		{...props}
 	/>
 )
