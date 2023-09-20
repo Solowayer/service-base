@@ -14,13 +14,17 @@ const buttonStyles = cva(
 		'font-medium',
 		'disabled:bg-gray-200',
 		'disabled:text-gray-400',
-		'disabled:hover:cursor-not-allowed'
+		'disabled:hover:cursor-not-allowed',
+		'transition',
+		'duration-100'
 	],
 	{
 		variants: {
 			variant: {
 				primary: 'bg-button-primary text-inverted hover:bg-button-primary-hover active:bg-button-primary-active',
-				ghost: 'bg-button-ghost text-primary hover:bg-button-ghost-hover active:bg-button-ghost-active'
+				ghost: 'bg-button-ghost text-primary hover:bg-button-ghost-hover active:bg-button-ghost-active',
+				link: 'text-primary underline-offset-4 hover:underline'
+				// outlined: 'text-primary border-currentColor border-2'
 			},
 			align: {
 				start: 'justify-start',

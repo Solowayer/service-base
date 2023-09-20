@@ -11,8 +11,6 @@ export const inputStyles = cva(
 		'overflow',
 		'text-md',
 		'border-2',
-		'border-transparent',
-		'hover:border',
 		'focus:border-selected',
 		'focus:bg-input-primary-focus',
 		'disabled:bg-disabled',

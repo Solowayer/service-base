@@ -4,7 +4,7 @@
 
 @layer base {
 	:root {
-		--color-transparent: 0, 0, 0;
+		--color-transparent: transparent;
 		--color-white: 255, 255, 255;
 		--color-black: 0, 0, 0;
 		--color-gray-50: 250, 250, 250;
@@ -72,7 +72,7 @@
 		--color-text-accent: var(--color-blue-500);
 		--color-text-positive: var(--color-green-500);
 		--color-text-warning: var(--color-orange-500);
-		--color-text-danger: var(--color-danger-500);
+		--color-text-danger: var(--color-red-500);
 		--color-text-disabled: var(--color-gray-400);
 	}
 
@@ -83,7 +83,7 @@
 		--color-text-accent: var(--color-blue-500);
 		--color-text-positive: var(--color-green-500);
 		--color-text-warning: var(--color-orange-500);
-		--color-text-danger: var(--color-danger-500);
+		--color-text-danger: var(--color-red-500);
 		--color-text-disabled: var(--color-gray-600);
 	}
 }
@@ -150,6 +150,9 @@
 		--color-background-positive-light: var(--color-green-900);
 		--color-background-orange-light: var(--color-orange-900);
 		--color-background-danger-light: var(--color-red-900);
+		--color-background-interactive-hover: var(--color-gray-800);
+		--color-background-interactive-active: var(--color-gray-700);
+		--color-background-interactive-selected: var(--color-white);
 		--color-background-disabled: var(--color-gray-800);
 
 		--color-surface-primary: var(--color-black);

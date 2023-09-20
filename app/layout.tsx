@@ -1,4 +1,5 @@
 import SiteHeader from '@/components/layouts/site-header'
+import { Toaster } from '@/components/ui/toast/toaster'
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -15,7 +16,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang="en">
 			<body className={inter.className}>
 				<SiteHeader user={false} />
-				{children}
+				<div className="px-10 mt-6">{children}</div>
+				<Toaster />
 			</body>
 		</html>
 	)

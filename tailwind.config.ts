@@ -68,7 +68,7 @@ const config: Config = {
 			'5xl': ['48px', '56px']
 		},
 		colors: {
-			transparent: 'rgba(var(--color-transparent), <alpha-value>)',
+			transparent: 'var(--color-transparent)',
 			white: 'rgba(var(--color-white), <alpha-value>)',
 			black: 'rgba(var(--color-black), <alpha-value>)',
 			gray: {
@@ -91,7 +91,9 @@ const config: Config = {
 				400: 'rgba(var(--color-red-400), <alpha-value>)',
 				500: 'rgba(var(--color-red-500), <alpha-value>)',
 				600: 'rgba(var(--color-red-600), <alpha-value>)',
-				700: 'rgba(var(--color-red-700), <alpha-value>)'
+				700: 'rgba(var(--color-red-700), <alpha-value>)',
+				800: 'rgba(var(--color-red-800), <alpha-value>)',
+				900: 'rgba(var(--color-red-900), <alpha-value>)'
 			},
 			orange: {
 				50: 'rgba(var(--color-orange-50), <alpha-value>)',
