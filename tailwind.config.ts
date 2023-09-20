@@ -167,6 +167,7 @@ const config: Config = {
 			'interactive-active': 'rgba(var(--color-background-interactive-active), <alpha-value>)',
 			'interactive-selected': 'rgba(var(--color-background-interactive-selected), <alpha-value>)',
 			disabled: 'rgba(var(--color-background-disabled), <alpha-value>)',
+			separator: 'rgba(var(--color-background-separator), <alpha-value>)',
 			surface: {
 				primary: 'rgba(var(--color-surface-primary), <alpha-value>)',
 				secondary: 'rgba(var(--color-surface-secondary), <alpha-value>)',

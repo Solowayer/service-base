@@ -14,6 +14,8 @@ export default function Home() {
 			<Link href="/table">Table Example</Link>
 			<Link href="/calendar">Calendar</Link>
 			<Link href="/select">Select Example</Link>
+			<Link href="/toast">Toasts</Link>
+			<Link href="/dropdown-menu">DropdownMenu</Link>
 		</div>
 	)
 }
