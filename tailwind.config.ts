@@ -136,6 +136,7 @@ const config: Config = {
 			...theme('colors'),
 			primary: 'rgba(var(--color-text-primary), <alpha-value>)',
 			secondary: 'rgba(var(--color-text-secondary), <alpha-value>)',
+			foreground: 'rgba(var(--color-text-foreground), <alpha-value>)',
 			inverted: 'rgba(var(--color-text-inverted), <alpha-value>)',
 			accent: 'rgba(var(--color-text-accent), <alpha-value>)',
 			positive: 'rgba(var(--color-text-positive), <alpha-value>)',
@@ -155,6 +156,9 @@ const config: Config = {
 		}),
 		backgroundColor: ({ theme }) => ({
 			...theme('colors'),
+			primary: 'rgba(var(--color-background-primary), <alpha-value>)',
+			secondary: 'rgba(var(--color-background-secondary), <alpha-value>)',
+			overlay: 'rgba(var(--color-background-overlay), 0.4)',
 			accent: 'rgba(var(--color-background-accent), <alpha-value>)',
 			positive: 'rgba(var(--color-background-positive), <alpha-value>)',
 			warning: 'rgba(var(--color-background-warning), <alpha-value>)',
@@ -168,11 +172,6 @@ const config: Config = {
 			'interactive-selected': 'rgba(var(--color-background-interactive-selected), <alpha-value>)',
 			disabled: 'rgba(var(--color-background-disabled), <alpha-value>)',
 			separator: 'rgba(var(--color-background-separator), <alpha-value>)',
-			surface: {
-				primary: 'rgba(var(--color-surface-primary), <alpha-value>)',
-				secondary: 'rgba(var(--color-surface-secondary), <alpha-value>)',
-				overlay: 'rgba(var(--color-surface-overlay), <alpha-value>)'
-			},
 			button: {
 				primary: {
 					DEFAULT: 'rgba(var(--color-button-primary), <alpha-value>)',

@@ -27,7 +27,7 @@ export default function SiteHeader({ user }: Props) {
 			<Input icon={<Search />} shape="round" placeholder="Шукати" className="w-[400px]" />
 			<div className="flex items-center gap-4">
 				<ThemeSwitcher />
-				<ButtonLink href="auth/signin">
+				<ButtonLink href="#">
 					<Person />
 					Увійти
 				</ButtonLink>

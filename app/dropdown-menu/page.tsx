@@ -1,6 +1,7 @@
 'use client'
 
 import { Person } from '@/components/icons'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
 	DropdownMenu,
@@ -14,19 +15,29 @@ import {
 	DropdownMenuSub,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-	DropdownMenuSubContent
+	DropdownMenuSubContent,
+	DropdownMenuRadioGroup
 } from '@/components/ui/dropdown-menu'
 import { Separator } from '@/components/ui/separator'
+import { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu'
 import React from 'react'
 
+type Checked = DropdownMenuCheckboxItemProps['checked']
+
 export default function Page() {
+	const [checked1, setChecked1] = React.useState<Checked>(true)
+	const [checked2, setChecked2] = React.useState<Checked>(false)
+	const [checked3, setChecked3] = React.useState<Checked>(false)
+
+	const [position, setPosition] = React.useState('bottom')
+
 	return (
 		<>
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Button variant="ghost">Show Dropdown menu</Button>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent>
+				<DropdownMenuContent align="start">
 					<DropdownMenuLabel>My Account</DropdownMenuLabel>
 					<Separator />
 					<DropdownMenuGroup>
@@ -49,14 +60,22 @@ export default function Page() {
 					</DropdownMenuGroup>
 					<Separator />
 					<DropdownMenuGroup>
-						<DropdownMenuCheckboxItem checked>Checkbox 1</DropdownMenuCheckboxItem>
-						<DropdownMenuCheckboxItem>Checkbox 2</DropdownMenuCheckboxItem>
-						<DropdownMenuCheckboxItem>Checkbox 3</DropdownMenuCheckboxItem>
+						<DropdownMenuCheckboxItem checked={checked1} onCheckedChange={setChecked1}>
+							Checkbox 1
+						</DropdownMenuCheckboxItem>
+						<DropdownMenuCheckboxItem checked={checked2} onCheckedChange={setChecked2}>
+							Checkbox 2
+						</DropdownMenuCheckboxItem>
+						<DropdownMenuCheckboxItem checked={checked3} onCheckedChange={setChecked3}>
+							Checkbox 3
+						</DropdownMenuCheckboxItem>
 					</DropdownMenuGroup>
 					<Separator />
-					<DropdownMenuGroup>
-						<DropdownMenuRadioItem value={'Checkbox 1'}>Radio 1</DropdownMenuRadioItem>
-					</DropdownMenuGroup>
+					<DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+						<DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
+						<DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
+						<DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
+					</DropdownMenuRadioGroup>
 				</DropdownMenuContent>
 			</DropdownMenu>
 		</>

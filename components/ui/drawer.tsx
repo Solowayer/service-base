@@ -25,7 +25,7 @@ const DrawerOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<DrawerPrimitive.Overlay
 		className={cn(
-			'fixed inset-0 z-50 bg-surface-overlay/40 data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out',
+			'fixed inset-0 z-50 bg-overlay data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out',
 			className
 		)}
 		{...props}
@@ -34,7 +34,7 @@ const DrawerOverlay = React.forwardRef<
 ))
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName
 
-const DrawerVariants = cva('fixed z-50 gap-4 bg-surface-primary shadow-lg overflow-hidden', {
+const DrawerVariants = cva('fixed z-50 gap-4 bg-primary shadow-lg overflow-hidden', {
 	variants: {
 		side: {
 			top: 'inset-x-0 top-0 border-b',
@@ -91,7 +91,7 @@ const DrawerHeader = ({
 	description,
 	...props
 }: React.HTMLAttributes<HTMLDivElement> & DrawerHeaderProps) => (
-	<div className="flex items-start justify-between border-b gap-4 p-4 bg-surface-secondary" {...props}>
+	<div className="flex items-start justify-between border-b gap-4 p-4 bg-secondary" {...props}>
 		<div className="flex flex-col gap-2">
 			<DrawerTitle>{title}</DrawerTitle>
 			{description && <DrawerDescription>{description}</DrawerDescription>}
@@ -107,7 +107,7 @@ DrawerHeader.displayName = 'DrawerHeader'
 
 const DrawerFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
-		className={cn('flex justify-end gap-4 bg-surface-primary p-4 border-t absolute bottom-0 w-full', className)}
+		className={cn('flex justify-end gap-4 bg-primary p-4 border-t absolute bottom-0 w-full', className)}
 		{...props}
 	/>
 )

@@ -16,7 +16,11 @@ const buttonStyles = cva(
 		'disabled:text-gray-400',
 		'disabled:hover:cursor-not-allowed',
 		'transition',
-		'duration-100'
+		'duration-100',
+		'ring-offset-white',
+		'ring-black',
+		'focus:ring-offset-2',
+		'focus:ring-2'
 	],
 	{
 		variants: {

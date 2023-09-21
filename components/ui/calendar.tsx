@@ -13,7 +13,7 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
 	return (
 		<DayPicker
 			showOutsideDays={showOutsideDays}
-			className={cn('border p-4 rounded bg-surface-primary', className)}
+			className={cn('border p-4 rounded bg-primary', className)}
 			classNames={{
 				months: 'flex gap-4',
 				month: 'space-y-4',
@@ -29,7 +29,7 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
 				row: 'flex w-full mt-2',
 				cell: 'w-10 h-10 flex items-center justify-center text-center font-normal p-0 relative',
 				day: 'w-10 h-10 aria-selected:bg-interactive-selected hover:bg-interactive-hover aria-selected:text-inverted rounded-full',
-				day_selected: 'bg-surface-primary hover:bg-surface-primary',
+				day_selected: 'bg-primary hover:bg-primary',
 				day_today: 'border border-selected',
 				day_outside: 'opacity-50',
 				day_disabled: 'opacity-50',

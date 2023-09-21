@@ -68,6 +68,7 @@
 	:root[data-theme='light'] {
 		--color-text-primary: var(--color-black);
 		--color-text-secondary: var(--color-gray-600);
+		--color-text-foreground: var(--color-white);
 		--color-text-inverted: var(--color-white);
 		--color-text-accent: var(--color-blue-500);
 		--color-text-positive: var(--color-green-500);
@@ -79,6 +80,7 @@
 	:root[data-theme='dark'] {
 		--color-text-primary: var(--color-white);
 		--color-text-secondary: var(--color-gray-400);
+		--color-text-foreground: var(--color-white);
 		--color-text-inverted: var(--color-black);
 		--color-text-accent: var(--color-blue-500);
 		--color-text-positive: var(--color-green-500);
@@ -112,6 +114,9 @@
 
 @layer background {
 	:root[data-theme='light'] {
+		--color-background-primary: var(--color-white);
+		--color-background-secondary: var(--color-gray-50);
+		--color-background-overlay: var(--color-black);
 		--color-background-accent: var(--color-blue-500);
 		--color-background-positive: var(--color-green-500);
 		--color-background-warning: var(--color-orange-500);
@@ -127,10 +132,6 @@
 
 		--color-background-separator: var(--color-gray-200);
 
-		--color-surface-primary: var(--color-white);
-		--color-surface-secondary: var(--color-gray-50);
-		--color-surface-overlay: var(--color-gray-200);
-
 		--color-button-primary: var(--color-black);
 		--color-button-primary-hover: var(--color-gray-800);
 		--color-button-primary-active: var(--color-black);
@@ -144,6 +145,9 @@
 	}
 
 	:root[data-theme='dark'] {
+		--color-background-primary: var(--color-black);
+		--color-background-secondary: var(--color-gray-900);
+		--color-background-overlay: var(--color-black);
 		--color-background-accent: var(--color-blue-500);
 		--color-background-positive: var(--color-green-500);
 		--color-background-warning: var(--color-orange-500);
@@ -158,10 +162,6 @@
 		--color-background-disabled: var(--color-gray-800);
 
 		--color-background-separator: var(--color-gray-900);
-
-		--color-surface-primary: var(--color-black);
-		--color-surface-secondary: var(--color-gray-900);
-		--color-surface-overlay: var(--color-gray-800);
 
 		--color-button-primary: var(--color-white);
 		--color-button-primary-hover: var(--color-gray-200);
@@ -178,6 +178,6 @@
 
 body {
 	color: rgba(var(--color-text-primary));
-	background: rgba(var(--color-surface-primary));
+	background: rgba(var(--color-background-primary));
 	font-size: 0.875rem;
 }

@@ -8,7 +8,7 @@ export default function Page() {
 	const [date, setDate] = React.useState<Date | undefined>(new Date())
 
 	return (
-		<div>
+		<div className='inline-flex'>
 			<Calendar locale={uk} mode="single" selected={date} onSelect={setDate} className="rounded-md border" />
 		</div>
 	)

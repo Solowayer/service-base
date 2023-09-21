@@ -18,7 +18,7 @@ const DialogOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<DialogPrimitive.Overlay
 		ref={ref}
-		className="fixed inset-0 z-50 bg-surface-overlay/40 data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out"
+		className="fixed inset-0 z-50 bg-overlay data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out"
 		{...props}
 	/>
 ))
@@ -33,7 +33,7 @@ const DialogContent = React.forwardRef<
 		<DialogPrimitive.Content
 			ref={ref}
 			className={cn(
-				'fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] w-full z-50 max-w-lg bg-surface-primary rounded shadow-lg border overflow-hidden data-[state=open]:animate-dialog-scale-in data-[state=closed]:animate-dialog-scale-out',
+				'fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] w-full z-50 max-w-lg bg-primary rounded shadow-lg border overflow-hidden data-[state=open]:animate-dialog-scale-in data-[state=closed]:animate-dialog-scale-out',
 				className
 			)}
 			{...props}
@@ -67,7 +67,7 @@ const DialogHeader = ({
 	description,
 	...props
 }: React.HTMLAttributes<HTMLDivElement> & DialogHeaderProps) => (
-	<div className="flex items-start justify-between gap-4 p-4 bg-surface-secondary border-b" {...props}>
+	<div className="flex items-start justify-between gap-4 p-4 bg-secondary border-b" {...props}>
 		<div className="flex flex-col gap-2">
 			<DialogTitle>{title}</DialogTitle>
 			{description && <DialogDescription>{description}</DialogDescription>}

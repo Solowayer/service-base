@@ -3,21 +3,8 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import React from 'react'
 import { Check, ChevronRight, Circle } from '@/components/icons'
-import { cva } from 'class-variance-authority'
 import { cn } from '@/lib/utils/cn'
-
-const itemStyles = cva(
-	[
-		'relative flex gap-2 cursor-default items-center rounded p-2 hover:cursor-pointer outline-none focus:bg-interactive-hover data-[disabled]:pointer-events-none data-[disabled]:opacity-50'
-	],
-	{
-		variants: {
-			offset: {
-				true: 'pl-9'
-			}
-		}
-	}
-)
+import { menuItemIndicatorStyles, menuItemStyles, menuStyles } from './menu'
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 
@@ -38,7 +25,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
 		inset?: boolean
 	}
 >(({ className, inset, children, ...props }, ref) => (
-	<DropdownMenuPrimitive.SubTrigger ref={ref} className={cn(itemStyles(), 'justify-between', className)} {...props}>
+	<DropdownMenuPrimitive.SubTrigger ref={ref} className={cn(menuItemStyles(), 'justify-between', className)} {...props}>
 		{children}
 		<ChevronRight />
 	</DropdownMenuPrimitive.SubTrigger>
@@ -50,11 +37,7 @@ const DropdownMenuSubContent = React.forwardRef<
 	React.ElementRef<typeof DropdownMenuPrimitive.SubContent>,
 	React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent>
 >(({ className, ...props }, ref) => (
-	<DropdownMenuPrimitive.SubContent
-		ref={ref}
-		className="flex flex-col gap-0.5 min-w-[8rem] border bg-surface-primary rounded p-2 shadow-md overflow-hidden z-[100]"
-		{...props}
-	/>
+	<DropdownMenuPrimitive.SubContent ref={ref} className={cn(menuStyles(), 'min-w-[8rem]', className)} {...props} />
 ))
 DropdownMenuSubContent.displayName = DropdownMenuPrimitive.SubContent.displayName
 
@@ -67,7 +50,7 @@ const DropdownMenuContent = React.forwardRef<
 		<DropdownMenuPrimitive.Content
 			ref={ref}
 			sideOffset={sideOffset}
-			className="flex flex-col gap-0.5 min-w-[240px] border bg-surface-primary rounded p-2 shadow-md z-[100]"
+			className={cn(menuStyles(), 'min-w-[240px]', className)}
 			{...props}
 		/>
 	</DropdownMenuPrimitive.Portal>
@@ -79,7 +62,7 @@ const DropdownMenuItem = React.forwardRef<
 	React.ElementRef<typeof DropdownMenuPrimitive.Item>,
 	React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item>
 >(({ className, ...props }, ref) => (
-	<DropdownMenuPrimitive.Item ref={ref} className={cn(itemStyles(), className)} {...props} />
+	<DropdownMenuPrimitive.Item ref={ref} className={cn(menuItemStyles(), className)} {...props} />
 ))
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
 
@@ -90,11 +73,11 @@ const DropdownMenuCheckboxItem = React.forwardRef<
 >(({ className, children, checked, ...props }, ref) => (
 	<DropdownMenuPrimitive.CheckboxItem
 		ref={ref}
-		className={cn(itemStyles({ offset: true }), 'data-[checked]:font-bold', className)}
+		className={cn(menuItemStyles(), 'data-[state=checked]:font-medium data-[state=checked]:text-positive', className)}
 		checked={checked}
 		{...props}
 	>
-		<DropdownMenuPrimitive.ItemIndicator className="absolute left-2 flex items-center justify-center">
+		<DropdownMenuPrimitive.ItemIndicator className={cn(menuItemIndicatorStyles())}>
 			<Check />
 		</DropdownMenuPrimitive.ItemIndicator>
 		{children}
@@ -107,8 +90,12 @@ const DropdownMenuRadioItem = React.forwardRef<
 	React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>,
 	React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem>
 >(({ className, children, ...props }, ref) => (
-	<DropdownMenuPrimitive.RadioItem ref={ref} className={cn(itemStyles({ offset: true }), className)} {...props}>
-		<DropdownMenuPrimitive.ItemIndicator className="absolute left-2 flex items-center justify-center">
+	<DropdownMenuPrimitive.RadioItem
+		ref={ref}
+		className={cn(menuItemStyles(), 'data-[state=checked]:font-medium data-[state=checked]:text-positive', className)}
+		{...props}
+	>
+		<DropdownMenuPrimitive.ItemIndicator className={cn(menuItemIndicatorStyles())}>
 			<Circle />
 		</DropdownMenuPrimitive.ItemIndicator>
 		{children}

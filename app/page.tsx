@@ -1,13 +1,6 @@
-'use client'
-
-import { useState } from 'react'
 import Link from 'next/link'
 
 export default function Home() {
-	const [date, setDate] = useState<Date | undefined>(new Date())
-
-	console.log(date)
-
 	return (
 		<div className="flex flex-col">
 			<Link href="/modals">Modal etc</Link>
@@ -16,6 +9,9 @@ export default function Home() {
 			<Link href="/select">Select Example</Link>
 			<Link href="/toast">Toasts</Link>
 			<Link href="/dropdown-menu">DropdownMenu</Link>
+			<Link href="/checkbox">Checkbox</Link>
+			<Link href="/radio-group">Radio Group</Link>
+			<Link href="/badge">Badge</Link>
 		</div>
 	)
 }
