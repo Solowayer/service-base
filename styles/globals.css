@@ -99,6 +99,14 @@
 		--color-border-positive: var(--color-green-300);
 		--color-border-warning: var(--color-orange-300);
 		--color-border-danger: var(--color-red-300);
+
+		--color-border-checkbox: var(--color-gray-200);
+		--color-border-checkbox-hover: var(--color-green-300);
+		--color-border-checkbox-checked: var(--color-green-300);
+
+		--color-border-radio: var(--color-gray-200);
+		--color-border-radio-hover: var(--color-green-300);
+		--color-border-radio-checked: var(--color-green-300);
 	}
 
 	:root[data-theme='dark'] {
@@ -109,13 +117,21 @@
 		--color-border-positive: var(--color-green-300);
 		--color-border-warning: var(--color-orange-300);
 		--color-border-danger: var(--color-red-300);
+
+		--color-border-checkbox: var(--color-gray-800);
+		--color-border-checkbox-hover: var(--color-green-700);
+		--color-border-checkbox-checked: var(--color-green-700);
+
+		--color-border-radio: var(--color-gray-800);
+		--color-border-radio-hover: var(--color-green-700);
+		--color-border-radio-checked: var(--color-green-700);
 	}
 }
 
 @layer background {
 	:root[data-theme='light'] {
 		--color-background-primary: var(--color-white);
-		--color-background-secondary: var(--color-gray-50);
+		--color-background-secondary: var(--color-gray-100);
 		--color-background-overlay: var(--color-black);
 		--color-background-accent: var(--color-blue-500);
 		--color-background-positive: var(--color-green-500);
@@ -132,16 +148,26 @@
 
 		--color-background-separator: var(--color-gray-200);
 
-		--color-button-primary: var(--color-black);
-		--color-button-primary-hover: var(--color-gray-800);
-		--color-button-primary-active: var(--color-black);
+		--color-background-button-primary: var(--color-black);
+		--color-background-button-primary-hover: var(--color-gray-800);
+		--color-background-button-primary-active: var(--color-black);
 
-		--color-button-ghost: var(--color-gray-100);
-		--color-button-ghost-hover: var(--color-gray-200);
-		--color-button-ghost-active: var(--color-gray-100);
+		--color-background-button-ghost: var(--color-gray-100);
+		--color-background-button-ghost-hover: var(--color-gray-200);
+		--color-background-button-ghost-active: var(--color-gray-100);
 
-		--color-input-primary: var(--color-gray-100);
-		--color-input-primary-focus: var(--color-white);
+		--color-background-input-primary: var(--color-gray-100);
+		--color-background-input-primary-focus: var(--color-white);
+
+		--color-background-checkbox: var(--color-transparent);
+		--color-background-checkbox-checked: var(--color-green-500);
+
+		--color-background-radio: var(--color-transparent);
+		--color-background-radio-checked: var(--color-green-500);
+
+		--color-background-switch: var(--color-gray-300);
+		--color-background-switch-checked: var(--color-green-500);
+		--color-background-switch-thumb: var(--color-white);
 	}
 
 	:root[data-theme='dark'] {
@@ -163,16 +189,26 @@
 
 		--color-background-separator: var(--color-gray-900);
 
-		--color-button-primary: var(--color-white);
-		--color-button-primary-hover: var(--color-gray-200);
-		--color-button-primary-active: var(--color-white);
+		--color-background-button-primary: var(--color-white);
+		--color-background-button-primary-hover: var(--color-gray-200);
+		--color-background-button-primary-active: var(--color-white);
 
-		--color-button-ghost: var(--color-gray-900);
-		--color-button-ghost-hover: var(--color-gray-800);
-		--color-button-ghost-active: var(--color-gray-900);
+		--color-background-button-ghost: var(--color-gray-900);
+		--color-background-button-ghost-hover: var(--color-gray-800);
+		--color-background-button-ghost-active: var(--color-gray-900);
 
-		--color-input-primary: var(--color-gray-900);
-		--color-input-primary-focus: var(--color-black);
+		--color-background-input-primary: var(--color-gray-900);
+		--color-background-input-primary-focus: var(--color-black);
+
+		--color-background-checkbox: var(--color-transparent);
+		--color-background-checkbox-checked: var(--color-green-800);
+
+		--color-background-radio: var(--color-transparent);
+		--color-background-radio-checked: var(--color-green-500);
+
+		--color-background-switch: var(--color-gray-700);
+		--color-background-switch-checked: var(--color-green-800);
+		--color-background-switch-thumb: var(--color-white);
 	}
 }
 

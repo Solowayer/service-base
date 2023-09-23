@@ -152,7 +152,17 @@ const config: Config = {
 			accent: 'rgba(var(--color-border-accent), <alpha-value>)',
 			positive: 'rgba(var(--color-border-positive), <alpha-value>)',
 			warning: 'rgba(var(--color-border-warning), <alpha-value>)',
-			danger: 'rgba(var(--color-border-danger), <alpha-value>)'
+			danger: 'rgba(var(--color-border-danger), <alpha-value>)',
+			checkbox: {
+				DEFAULT: 'rgba(var(--color-border-checkbox), <alpha-value>)',
+				hover: 'rgba(var(--color-border-checkbox-hover), <alpha-value>)',
+				checked: 'rgba(var(--color-border-checkbox-checked), <alpha-value>)'
+			},
+			radio: {
+				DEFAULT: 'rgba(var(--color-border-radio), <alpha-value>)',
+				hover: 'rgba(var(--color-border-radio-hover), <alpha-value>)',
+				checked: 'rgba(var(--color-border-radio-checked), <alpha-value>)'
+			}
 		}),
 		backgroundColor: ({ theme }) => ({
 			...theme('colors'),
@@ -174,21 +184,34 @@ const config: Config = {
 			separator: 'rgba(var(--color-background-separator), <alpha-value>)',
 			button: {
 				primary: {
-					DEFAULT: 'rgba(var(--color-button-primary), <alpha-value>)',
-					hover: 'rgba(var(--color-button-primary-hover), <alpha-value>)',
-					active: 'rgba(var(--color-button-primary-active), <alpha-value>)'
+					DEFAULT: 'rgba(var(--color-background-button-primary), <alpha-value>)',
+					hover: 'rgba(var(--color-background-button-primary-hover), <alpha-value>)',
+					active: 'rgba(var(--color-background-button-primary-active), <alpha-value>)'
 				},
 				ghost: {
-					DEFAULT: 'rgba(var(--color-button-ghost), <alpha-value>)',
-					hover: 'rgba(var(--color-button-ghost-hover), <alpha-value>)',
-					active: 'rgba(var(--color-button-ghost-active), <alpha-value>)'
+					DEFAULT: 'rgba(var(--color-background-button-ghost), <alpha-value>)',
+					hover: 'rgba(var(--color-background-button-ghost-hover), <alpha-value>)',
+					active: 'rgba(var(--color-background-button-ghost-active), <alpha-value>)'
 				}
 			},
 			input: {
 				primary: {
-					DEFAULT: 'rgba(var(--color-input-primary), <alpha-value>)',
-					focus: 'rgba(var(--color-input-primary-focus), <alpha-value>)'
+					DEFAULT: 'rgba(var(--color-background-input-primary), <alpha-value>)',
+					focus: 'rgba(var(--color-background-input-primary-focus), <alpha-value>)'
 				}
+			},
+			checkbox: {
+				DEFAULT: 'rgba(var(--color-background-checkbox), <alpha-value>)',
+				checked: 'rgba(var(--color-background-checkbox-checked), <alpha-value>)'
+			},
+			radio: {
+				DEFAULT: 'rgba(var(--color-background-radio), <alpha-value>)',
+				checked: 'rgba(var(--color-background-radio-checked), <alpha-value>)'
+			},
+			switch: {
+				DEFAULT: 'rgba(var(--color-background-switch), <alpha-value>)',
+				checked: 'rgba(var(--color-background-switch-checked), <alpha-value>)',
+				thumb: 'rgba(var(--color-background-switch-thumb), <alpha-value>)'
 			}
 		}),
 		extend: {

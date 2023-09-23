@@ -12,6 +12,7 @@ export default function Home() {
 			<Link href="/checkbox">Checkbox</Link>
 			<Link href="/radio-group">Radio Group</Link>
 			<Link href="/badge">Badge</Link>
+			<Link href="/switch">Switch</Link>
 		</div>
 	)
 }

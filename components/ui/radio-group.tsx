@@ -18,10 +18,10 @@ const RadioGroupItem = React.forwardRef<
 		<RadioGroupPrimitive.Item
 			ref={ref}
 			id={id}
-			className="h-5 w-5 rounded-full border-2 hover:border-positive focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-positive"
+			className="h-5 w-5 rounded-full border-radio border-2 hover:border-radio-hover focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-radio-checked"
 			{...props}
 		>
-			<RadioGroupPrimitive.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-2 after:h-2 after:rounded-full after:bg-positive" />
+			<RadioGroupPrimitive.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-2 after:h-2 after:rounded-full bg-radio after:bg-radio-checked" />
 		</RadioGroupPrimitive.Item>
 		<label className="pl-2" htmlFor={id}>
 			{label}
