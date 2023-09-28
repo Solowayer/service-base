@@ -1,23 +1,9 @@
 'use client'
 
-import { Check } from '@/components/icons'
-import { Button } from '@/components/ui/button'
-import { Calendar } from '@/components/ui/calendar'
-import {
-	Select,
-	SelectContent,
-	SelectGroup,
-	SelectItem,
-	SelectLabel,
-	SelectTrigger,
-	SelectValue
-} from '@/components/ui/select'
+import { Button, buttonStyles } from '@/components/ui/button'
 import { Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerTrigger } from '@/components/ui/drawer'
-
 import { useState } from 'react'
-import { uk } from 'date-fns/locale'
 import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTrigger } from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -29,10 +15,6 @@ import {
 } from '@/components/ui/alert-dialog'
 
 export default function Home() {
-	const [date, setDate] = useState<Date | undefined>(new Date())
-
-	console.log(date)
-
 	return (
 		<main className="flex flex-col p-24">
 			<div className="flex gap-2">
@@ -81,7 +63,7 @@ export default function Home() {
 						/>
 						<AlertDialogFooter>
 							<AlertDialogCancel>Скасувати</AlertDialogCancel>
-							<AlertDialogAction>Підтвердити</AlertDialogAction>
+							<AlertDialogAction className={buttonStyles({ variant: 'primary' })}>Підтвердити</AlertDialogAction>
 						</AlertDialogFooter>
 					</AlertDialogContent>
 				</AlertDialog>

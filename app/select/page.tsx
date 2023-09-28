@@ -7,7 +7,7 @@ export default function Page() {
 	return (
 		<>
 			<Select>
-				<SelectTrigger className="w-[180px]">
+				<SelectTrigger className="w-[280px]">
 					<SelectValue placeholder="Theme" />
 				</SelectTrigger>
 				<SelectContent position="popper">

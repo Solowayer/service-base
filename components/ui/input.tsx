@@ -10,9 +10,10 @@ export const inputStyles = cva(
 		'px-4',
 		'overflow',
 		'text-md',
-		'border-2',
-		'focus:border-selected',
-		'focus:bg-input-primary-focus',
+		'focus:ring-offset-white',
+		'focus:ring-black',
+		'focus:ring-offset-2',
+		'focus:ring-2',
 		'disabled:bg-disabled',
 		'disabled:text-disabled',
 		'disabled:hover:cursor-not-allowed'

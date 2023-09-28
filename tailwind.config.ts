@@ -46,9 +46,9 @@ const config: Config = {
 		},
 		borderRadius: {
 			none: '0',
-			sm: '.125rem',
-			DEFAULT: '.25rem',
-			lg: '.5rem',
+			sm: '.25rem',
+			DEFAULT: '.5rem',
+			lg: '1rem',
 			full: '9999px'
 		},
 		screens: {
@@ -192,6 +192,31 @@ const config: Config = {
 					DEFAULT: 'rgba(var(--color-background-button-ghost), <alpha-value>)',
 					hover: 'rgba(var(--color-background-button-ghost-hover), <alpha-value>)',
 					active: 'rgba(var(--color-background-button-ghost-active), <alpha-value>)'
+				},
+				clear: {
+					DEFAULT: 'rgba(var(--color-background-button-clear), <alpha-value>)',
+					hover: 'rgba(var(--color-background-button-clear-hover), <alpha-value>)',
+					active: 'rgba(var(--color-background-button-clear-active), <alpha-value>)'
+				},
+				accent: {
+					DEFAULT: 'rgba(var(--color-background-button-accent), <alpha-value>)',
+					hover: 'rgba(var(--color-background-button-accent-hover), <alpha-value>)',
+					active: 'rgba(var(--color-background-button-accent-active), <alpha-value>)'
+				},
+				positive: {
+					DEFAULT: 'rgba(var(--color-background-button-positive), <alpha-value>)',
+					hover: 'rgba(var(--color-background-button-positive-hover), <alpha-value>)',
+					active: 'rgba(var(--color-background-button-positive-active), <alpha-value>)'
+				},
+				warning: {
+					DEFAULT: 'rgba(var(--color-background-button-warning), <alpha-value>)',
+					hover: 'rgba(var(--color-background-button-warning-hover), <alpha-value>)',
+					active: 'rgba(var(--color-background-button-warning-active), <alpha-value>)'
+				},
+				danger: {
+					DEFAULT: 'rgba(var(--color-background-button-danger), <alpha-value>)',
+					hover: 'rgba(var(--color-background-button-danger-hover), <alpha-value>)',
+					active: 'rgba(var(--color-background-button-danger-active), <alpha-value>)'
 				}
 			},
 			input: {
@@ -212,6 +237,14 @@ const config: Config = {
 				DEFAULT: 'rgba(var(--color-background-switch), <alpha-value>)',
 				checked: 'rgba(var(--color-background-switch-checked), <alpha-value>)',
 				thumb: 'rgba(var(--color-background-switch-thumb), <alpha-value>)'
+			},
+			badge: {
+				neutral: 'rgba(var(--color-background-badge-neutral), <alpha-value>)',
+				primary: 'rgba(var(--color-background-badge-primary), <alpha-value>)',
+				accent: 'rgba(var(--color-background-badge-accent), <alpha-value>)',
+				positive: 'rgba(var(--color-background-badge-positive), <alpha-value>)',
+				warning: 'rgba(var(--color-background-badge-warning), <alpha-value>)',
+				danger: 'rgba(var(--color-background-badge-danger), <alpha-value>)'
 			}
 		}),
 		extend: {

@@ -17,8 +17,8 @@ const buttonStyles = cva(
 		'disabled:hover:cursor-not-allowed',
 		'transition',
 		'duration-100',
-		'ring-offset-white',
-		'ring-black',
+		'focus:ring-offset-white',
+		'focus:ring-black',
 		'focus:ring-offset-2',
 		'focus:ring-2'
 	],
@@ -26,9 +26,13 @@ const buttonStyles = cva(
 		variants: {
 			variant: {
 				primary: 'bg-button-primary text-inverted hover:bg-button-primary-hover active:bg-button-primary-active',
-				ghost: 'bg-button-ghost text-primary hover:bg-button-ghost-hover active:bg-button-ghost-active',
+				ghost: 'bg-button-ghost text-primary hover:bg-button-ghost-hover active:bg-button-ghost-active border',
+				clear: 'bg-button-clear text-primary hover:bg-button-clear-hover active:bg-button-clear-active',
+				accent: 'bg-button-accent text-foreground hover:bg-button-accent-hover active:bg-button-accent-active',
+				positive: 'bg-button-positive text-foreground hover:bg-button-positive-hover active:bg-button-positive-active',
+				warning: 'bg-button-warning text-foreground hover:bg-button-warning-hover active:bg-button-warning-active',
+				danger: 'bg-button-danger text-foreground hover:bg-button-danger-hover active:bg-button-danger-active',
 				link: 'text-primary underline-offset-4 hover:underline'
-				// outlined: 'text-primary border-currentColor border-2'
 			},
 			align: {
 				start: 'justify-start',

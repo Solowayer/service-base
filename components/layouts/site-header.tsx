@@ -13,7 +13,7 @@ export default function SiteHeader({ user }: Props) {
 	return (
 		<div className="flex items-center h-20 bg-surface-primary border-primary border-b px-10 justify-between gap-4">
 			<div className="flex items-center gap-4">
-				<Button variant="ghost" size="icon-medium">
+				<Button variant="clear" size="icon-medium">
 					<Menu />
 				</Button>
 				<Link href="/" className="font-bold">
@@ -31,7 +31,7 @@ export default function SiteHeader({ user }: Props) {
 					<Person />
 					Увійти
 				</ButtonLink>
-				<Button variant="ghost" size="icon-medium">
+				<Button variant="clear" size="icon-medium">
 					<Cart />
 				</Button>
 			</div>

@@ -13,6 +13,7 @@ export default function Home() {
 			<Link href="/radio-group">Radio Group</Link>
 			<Link href="/badge">Badge</Link>
 			<Link href="/switch">Switch</Link>
+			<Link href="/tabs">Tabs</Link>
 		</div>
 	)
 }

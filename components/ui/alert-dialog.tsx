@@ -80,8 +80,8 @@ AlertDialogFooter.displayName = 'AlertDialogFooter'
 const AlertDialogAction = React.forwardRef<
 	React.ElementRef<typeof AlertDialogPrimitive.Action>,
 	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>
->(({ ...props }, ref) => (
-	<AlertDialogPrimitive.Action ref={ref} {...props} className={cn(buttonStyles({ variant: 'primary' }))} />
+>(({ className, ...props }, ref) => (
+	<AlertDialogPrimitive.Action ref={ref} {...props} className={(cn(buttonStyles({ variant: 'primary' })), className)} />
 ))
 AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName
 

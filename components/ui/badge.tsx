@@ -6,11 +6,12 @@ import { cn } from '@/lib/utils/cn'
 const badgeVariants = cva('inline-flex items-center rounded-full font-medium', {
 	variants: {
 		variant: {
-			primary: 'border bg-primary text-foreground',
-			accent: 'bg-accent text-foreground',
-			positive: 'bg-positive text-foreground',
-			warning: 'bg-warning text-foreground',
-			danger: 'bg-danger text-foreground'
+			neutral: 'border bg-badge-neutral',
+			primary: 'bg-badge-primary text-foreground',
+			accent: 'bg-badge-accent text-foreground',
+			positive: 'bg-badge-positive text-foreground',
+			warning: 'bg-badge-warning text-foreground',
+			danger: 'bg-badge-danger text-foreground'
 		},
 		type: {
 			default: 'px-2 py-0.5 gap-1',

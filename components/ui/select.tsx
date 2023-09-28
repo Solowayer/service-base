@@ -6,6 +6,7 @@ import { Check, ExpandMore } from '@/components/icons'
 
 import { cn } from '@/lib/utils/cn'
 import { menuItemIndicatorStyles, menuItemStyles, menuStyles } from './menu'
+import { buttonStyles } from './button'
 
 const Select = SelectPrimitive.Root
 
@@ -20,10 +21,7 @@ const SelectTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
 	<SelectPrimitive.Trigger
 		ref={ref}
-		className={cn(
-			'flex h-10 w-full text-md items-center justify-between rounded border bg-input-primary px-4 py-2 disabled:cursor-not-allowed',
-			className
-		)}
+		className={cn(buttonStyles({ variant: 'ghost' }), 'justify-between', className)}
 		{...props}
 	>
 		{children}
