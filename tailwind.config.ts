@@ -7,6 +7,22 @@ const config: Config = {
 		'./app/**/*.{js,ts,jsx,tsx,mdx}'
 	],
 	theme: {
+		screens: {
+			sm: '480px',
+			md: '768px',
+			lg: '976px',
+			xl: '1600px'
+		},
+		container: {
+			center: true,
+			padding: {
+				DEFAULT: '1rem',
+				sm: '2rem',
+				lg: '4rem',
+				xl: '5rem',
+				'2xl': '6rem'
+			}
+		},
 		spacing: {
 			px: '1px',
 			0: '0',
@@ -50,12 +66,6 @@ const config: Config = {
 			DEFAULT: '.5rem',
 			lg: '1rem',
 			full: '9999px'
-		},
-		screens: {
-			sm: '480px',
-			md: '768px',
-			lg: '976px',
-			xl: '1440px'
 		},
 		fontSize: {
 			sm: ['12px', '16px'],
@@ -299,6 +309,14 @@ const config: Config = {
 				'fade-out': {
 					'0%': { opacity: '1' },
 					'100%': { opacity: '0' }
+				},
+				'accordion-down': {
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
+				},
+				'accordion-up': {
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
 				}
 			}
 		},
@@ -316,7 +334,10 @@ const config: Config = {
 			'dialog-scale-out': 'dialog-scale-out 0.2s ease-in-out',
 
 			'fade-in': 'fade-in 0.3s ease-in-out',
-			'fade-out': 'fade-out 0.3s ease-in-out'
+			'fade-out': 'fade-out 0.3s ease-in-out',
+
+			'accordion-down': 'accordion-down 0.2s ease-out',
+			'accordion-up': 'accordion-up 0.2s ease-out'
 		}
 	},
 	plugins: []

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+@layer primitives {
 	:root {
 		--color-transparent: transparent;
 		--color-white: 255, 255, 255;
@@ -278,8 +278,8 @@
 	}
 }
 
-body {
-	color: rgba(var(--color-text-primary));
-	background: rgba(var(--color-background-primary));
-	font-size: 0.875rem;
+@layer base {
+	body {
+		@apply bg-primary text-primary text-md;
+	}
 }
