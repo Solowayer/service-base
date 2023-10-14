@@ -2,9 +2,9 @@
 
 import * as React from 'react'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
-import { Close } from '../icons'
 import { buttonStyles } from './button'
 import { cn } from '@/lib/utils/cn'
+import { Icons } from '@/components/icons'
 
 const Dialog = DialogPrimitive.Root
 
@@ -75,7 +75,7 @@ const DialogHeader = ({
 		<DialogPrimitive.Close
 			className={cn(buttonStyles({ variant: 'ghost', shape: 'round', size: 'icon-small' }), 'absolute top-3 right-4')}
 		>
-			<Close />
+			<Icons.close />
 		</DialogPrimitive.Close>
 	</div>
 )

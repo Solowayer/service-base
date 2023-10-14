@@ -2,9 +2,9 @@
 
 import * as React from 'react'
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
-import { ExpandMore } from '../icons'
 
 import { cn } from '@/lib/utils/cn'
+import { Icons } from '../icons'
 
 const Accordion = AccordionPrimitive.Root
 
@@ -30,7 +30,7 @@ const AccordionTrigger = React.forwardRef<
 			{...props}
 		>
 			{children}
-			<ExpandMore className="shrink-0 transition-transform duration-200" />
+			<Icons.chevronDown className="w-5 h-5 shrink-0 transition-transform duration-200" />
 		</AccordionPrimitive.Trigger>
 	</AccordionPrimitive.Header>
 ))

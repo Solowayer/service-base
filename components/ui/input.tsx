@@ -14,9 +14,10 @@ export const inputStyles = cva(
 		'focus:ring-black',
 		'focus:ring-offset-2',
 		'focus:ring-2',
-		'disabled:bg-disabled',
-		'disabled:text-disabled',
-		'disabled:hover:cursor-not-allowed'
+		'focus:bg-input-primary-focus',
+		'border',
+		'placeholder:text-secondary',
+		'disabled:cursor-not-allowed disabled:opacity-50'
 	],
 	{
 		variants: {
@@ -50,15 +51,15 @@ export interface InputProps
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-	{ variant, size, label, icon, id, type = 'text', placeholder = 'Text here...', className, ...props },
+	{ variant, size, shape, label, icon, id, type = 'text', placeholder = 'Text here...', className, ...props },
 	ref
 ) {
 	return (
-		<div className={cn('inline-flex relative items-center', className)}>
+		<div className="inline-flex relative items-center">
 			{icon && <div className={`absolute left-4 ${props.disabled && 'text-disabled'}`}>{icon}</div>}
 			<input
 				ref={ref}
-				className={`${inputStyles({ variant, size })} ${icon && '!pl-12'}`}
+				className={cn(inputStyles({ variant, size, shape }), `${icon && '!pl-12 pr-4'}`, className)}
 				id={id}
 				type={type}
 				placeholder={placeholder}

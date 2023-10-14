@@ -17,10 +17,7 @@ const config: Config = {
 			center: true,
 			padding: {
 				DEFAULT: '1rem',
-				sm: '2rem',
-				lg: '4rem',
-				xl: '5rem',
-				'2xl': '6rem'
+				sm: '2.5rem'
 			}
 		},
 		spacing: {
@@ -157,7 +154,7 @@ const config: Config = {
 		borderColor: ({ theme }) => ({
 			...theme('colors'),
 			DEFAULT: 'rgba(var(--color-border-primary), <alpha-value>)',
-			transparent: 'rgba(var(--color-border-transparent), <alpha-value>)',
+			transparent: 'var(--color-border-transparent)',
 			selected: 'rgba(var(--color-border-selected), <alpha-value>)',
 			accent: 'rgba(var(--color-border-accent), <alpha-value>)',
 			positive: 'rgba(var(--color-border-positive), <alpha-value>)',
@@ -293,6 +290,14 @@ const config: Config = {
 					'100%': { transform: 'translateY(100%)' }
 				},
 				// SCALE
+				'scale-in': {
+					'0%': { opacity: '0', transform: 'scale(0.8)' },
+					'100%': { opacity: '1', transform: 'scale(1)' }
+				},
+				'scale-out': {
+					'0%': { opacity: '1', transform: 'translateX(-50%) translateY(-50%) scale(1)' },
+					'100%': { opacity: '0', transform: 'translateX(-50%) translateY(-50%) scale(0.8)' }
+				},
 				'dialog-scale-in': {
 					'0%': { opacity: '0', transform: 'translateX(-50%) translateY(-50%) scale(0.8)' },
 					'100%': { opacity: '1', transform: 'translateX(-50%) translateY(-50%) scale(1)' }
@@ -330,6 +335,8 @@ const config: Config = {
 			'slide-in-bottom': 'slide-in-bottom 0.3s ease-in-out',
 			'slide-out-bottom': 'slide-out-bottom 0.3s ease-in-out',
 
+			'scale-in': 'dialog-scale-in 0.2s ease-in-out',
+			'scale-out': 'dialog-scale-out 0.2s ease-in-out',
 			'dialog-scale-in': 'dialog-scale-in 0.2s ease-in-out',
 			'dialog-scale-out': 'dialog-scale-out 0.2s ease-in-out',
 

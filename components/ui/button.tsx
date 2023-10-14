@@ -12,15 +12,13 @@ const buttonStyles = cva(
 		'select-none',
 		'outline-none',
 		'font-medium',
-		'disabled:bg-gray-200',
-		'disabled:text-gray-400',
-		'disabled:hover:cursor-not-allowed',
 		'transition',
 		'duration-100',
-		'focus:ring-offset-white',
-		'focus:ring-black',
-		'focus:ring-offset-2',
-		'focus:ring-2'
+		'focus-visible:ring-offset-white',
+		'focus-visible:ring-black',
+		'focus-visible:ring-offset-2',
+		'focus-visible:ring-2',
+		'disabled:pointer-events-none disabled:opacity-50'
 	],
 	{
 		variants: {

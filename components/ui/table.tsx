@@ -29,11 +29,6 @@ const TableFooter = React.forwardRef<HTMLTableSectionElement, React.HTMLAttribut
 TableFooter.displayName = 'TableFooter'
 
 const TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTMLTableRowElement>>(
-	({ className, ...props }, ref) => <tr ref={ref} className={cn('border-b', className)} {...props} />
-)
-TableRow.displayName = 'TableRow'
-
-const TableRowBody = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTMLTableRowElement>>(
 	({ className, ...props }, ref) => (
 		<tr
 			ref={ref}
@@ -42,7 +37,7 @@ const TableRowBody = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<
 		/>
 	)
 )
-TableRowBody.displayName = 'TableRowBody'
+TableRow.displayName = 'TableRow'
 
 const TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<HTMLTableCellElement>>(
 	({ className, ...props }, ref) => (
@@ -70,4 +65,4 @@ const TableCaption = React.forwardRef<HTMLTableCaptionElement, React.HTMLAttribu
 )
 TableCaption.displayName = 'TableCaption'
 
-export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableRowBody, TableCell, TableCaption }
+export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, TableCaption }

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Sun, Moon } from '../icons'
+import { Icons } from '../icons'
 import { Button } from '../ui/button'
 
 export default function ThemeSwitcher() {
@@ -18,7 +18,7 @@ export default function ThemeSwitcher() {
 	return (
 		<>
 			<Button onClick={toggleTheme} variant="ghost" size="icon-medium">
-				{dark ? <Sun className="text-warning" /> : <Moon className="text-accent" />}
+				{dark ? <Icons.sun className="w-5 h-5 text-warning" /> : <Icons.moon className="w-5 h-5 text-accent" />}
 			</Button>
 		</>
 	)

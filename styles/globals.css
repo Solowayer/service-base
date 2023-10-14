@@ -150,8 +150,8 @@
 		--color-background-positive-light: var(--color-green-50);
 		--color-background-orange-light: var(--color-orange-50);
 		--color-background-danger-light: var(--color-red-50);
-		--color-background-interactive-hover: var(--color-gray-200);
-		--color-background-interactive-active: var(--color-gray-300);
+		--color-background-interactive-hover: var(--color-gray-100);
+		--color-background-interactive-active: var(--color-gray-200);
 		--color-background-interactive-selected: var(--color-black);
 		--color-background-disabled: var(--color-gray-200);
 		/* SEPARATOR - LIGHT */
@@ -220,8 +220,8 @@
 		--color-background-positive-light: var(--color-green-900);
 		--color-background-orange-light: var(--color-orange-900);
 		--color-background-danger-light: var(--color-red-900);
-		--color-background-interactive-hover: var(--color-gray-800);
-		--color-background-interactive-active: var(--color-gray-700);
+		--color-background-interactive-hover: var(--color-gray-900);
+		--color-background-interactive-active: var(--color-gray-800);
 		--color-background-interactive-selected: var(--color-white);
 		--color-background-disabled: var(--color-gray-800);
 		/* SEPARATOR - DARK */

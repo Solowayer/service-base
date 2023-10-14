@@ -3,7 +3,7 @@
 import * as React from 'react'
 import * as DrawerPrimitive from '@radix-ui/react-dialog'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { Close } from '@/components/icons'
+import { Icons } from '@/components/icons'
 
 import { cn } from '@/lib/utils/cn'
 import { buttonStyles } from './button'
@@ -97,7 +97,7 @@ const DrawerHeader = ({
 		<DrawerPrimitive.Close
 			className={cn(buttonStyles({ variant: 'ghost', shape: 'round', size: 'icon-small' }), 'absolute top-3 right-4')}
 		>
-			<Close />
+			<Icons.close />
 		</DrawerPrimitive.Close>
 	</div>
 )

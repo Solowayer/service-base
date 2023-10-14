@@ -2,9 +2,10 @@
 
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import React from 'react'
-import { Check, ChevronRight, Circle } from '@/components/icons'
+// import { Check, ChevronRight, Circle } from '@/components/icons'
 import { cn } from '@/lib/utils/cn'
 import { menuItemIndicatorStyles, menuItemStyles, menuStyles } from './menu'
+import { Icons } from '@/components/icons'
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 
@@ -27,7 +28,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
 >(({ className, inset, children, ...props }, ref) => (
 	<DropdownMenuPrimitive.SubTrigger ref={ref} className={cn(menuItemStyles(), 'justify-between', className)} {...props}>
 		{children}
-		<ChevronRight />
+		<Icons.chevronRight />
 	</DropdownMenuPrimitive.SubTrigger>
 ))
 DropdownMenuSubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayName
@@ -78,7 +79,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
 		{...props}
 	>
 		<DropdownMenuPrimitive.ItemIndicator className={cn(menuItemIndicatorStyles())}>
-			<Check />
+			<Icons.check />
 		</DropdownMenuPrimitive.ItemIndicator>
 		{children}
 	</DropdownMenuPrimitive.CheckboxItem>
@@ -96,7 +97,7 @@ const DropdownMenuRadioItem = React.forwardRef<
 		{...props}
 	>
 		<DropdownMenuPrimitive.ItemIndicator className={cn(menuItemIndicatorStyles())}>
-			<Circle />
+			<Icons.circle className="w-3 h-3" />
 		</DropdownMenuPrimitive.ItemIndicator>
 		{children}
 	</DropdownMenuPrimitive.RadioItem>
