@@ -1,7 +1,5 @@
-'use client'
-
-import { Combobox, ComboboxInput, ComboboxOption, ComboboxOptions } from '@/components/ui/combobox'
-import React, { useState } from 'react'
+import { Combobox } from '@/components/ui/combobox'
+import React from 'react'
 
 const people = [
 	'Анна Іванова',
@@ -57,34 +55,9 @@ const people = [
 ]
 
 export default function Page() {
-	const [selectedValue, setSelectedValue] = useState(people[0])
-	const [searchTerm, setSearchTerm] = useState<string>('')
-
-	const filteredPeople =
-		searchTerm === ''
-			? people
-			: people.filter(person => {
-					return person.toLowerCase().includes(searchTerm.toLowerCase())
-			  })
-
 	return (
-		<>
-			<Combobox value={selectedValue} defaultValue={selectedValue}>
-				<ComboboxInput value={searchTerm} onValueChange={setSearchTerm} />
-				<ComboboxOptions>
-					{filteredPeople?.map(item => (
-						<ComboboxOption
-							key={item}
-							selected={item === selectedValue}
-							onClick={() => {
-								setSelectedValue(item)
-							}}
-						>
-							{item}
-						</ComboboxOption>
-					))}
-				</ComboboxOptions>
-			</Combobox>
-		</>
+		<div className="container">
+			<Combobox items={people} placeholder="Виберіть співробітника..." />
+		</div>
 	)
 }
