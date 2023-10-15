@@ -3,14 +3,14 @@ import { VariantProps, cva } from 'class-variance-authority'
 import Link from 'next/link'
 import React from 'react'
 
-function NavTabsList({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+const NavTabsList = ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
 	return (
-		<div className={`flex items-center border-b ${className}`} {...props}>
+		<div className={cn('flex items-center border-b', className)} {...props}>
 			{children}
 		</div>
 	)
 }
-NavTabsList.displayName = 'TabLinksList'
+NavTabsList.displayName = 'NavTabsList'
 
 export const tabStyles = cva(
 	[
