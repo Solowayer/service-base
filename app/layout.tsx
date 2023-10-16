@@ -1,3 +1,4 @@
+import MobileHeader from '@/components/layouts/mobile-header'
 import SiteHeader from '@/components/layouts/site-header'
 import { Toaster } from '@/components/ui/toast/toaster'
 import '@/styles/globals.css'
@@ -14,9 +15,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en">
+		<html lang="en" data-theme="light">
 			<body className={roboto.className}>
 				<SiteHeader user={false} />
+				<MobileHeader user={false} />
 				<div className="px-10 mt-6">{children}</div>
 				<Toaster />
 			</body>

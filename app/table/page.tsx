@@ -1,17 +1,9 @@
 import React from 'react'
 import MOCK_DATA_TABLE from './MOCK_DATA_TABLE.json'
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableFooter,
-	TableHead,
-	TableHeader,
-	TableRowBody,
-	TableRow
-} from '@/components/ui/table'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Button } from '@/components/ui/button'
-import { ChevronLeft, ChevronRight, ExpandMore } from '@/components/icons'
+import { Icons } from '@/components/icons'
+import { Badge } from '@/components/ui/badge'
 
 export default function Page() {
 	return (
@@ -19,35 +11,40 @@ export default function Page() {
 			<Table>
 				<TableHeader>
 					<TableRow>
-						<TableHead className="w-[100px]">Id</TableHead>
-						<TableHead>Product Name</TableHead>
-						<TableHead>Department</TableHead>
 						<TableHead>
-							<Button variant="ghost" size="small">
-								Price
-								<ExpandMore />
+							<Button variant="clear">
+								Товар <Icons.chevronDown />
 							</Button>
 						</TableHead>
+						<TableHead>ID</TableHead>
+						<TableHead>Назва</TableHead>
+						<TableHead>Категорія</TableHead>
+						<TableHead>Ціна</TableHead>
 					</TableRow>
 				</TableHeader>
 				<TableBody>
-					{MOCK_DATA_TABLE.map(data => (
-						<TableRowBody key={data.id}>
-							<TableCell>{data.id}</TableCell>
-							<TableCell>{data.product_name}</TableCell>
-							<TableCell>{data.department}</TableCell>
-							<TableCell>${data.price}</TableCell>
-						</TableRowBody>
+					{MOCK_DATA_TABLE.map(product => (
+						<TableRow key={product.id}>
+							<TableCell>
+								<span className="text-blue-500 hover:underline cursor-pointer">{product.product_name}</span>
+							</TableCell>
+							<TableCell>{product.id}</TableCell>
+							<TableCell>{product.product_name}</TableCell>
+							<TableCell>
+								<Badge variant="accent">{product.department}</Badge>
+							</TableCell>
+							<TableCell>{product.price}</TableCell>
+						</TableRow>
 					))}
 				</TableBody>
 			</Table>
 			<div className="flex items-center justify-end gap-4">
 				<Button variant="ghost" shape="round" size="icon-medium">
-					<ChevronLeft />
+					<Icons.chevronLeft />
 				</Button>
 				100
 				<Button variant="ghost" shape="round" size="icon-medium">
-					<ChevronRight />
+					<Icons.chevronRight />
 				</Button>
 			</div>
 		</div>
