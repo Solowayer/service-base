@@ -3,12 +3,12 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils/cn'
 import { Separator } from '@/components/ui/separator'
 
-interface PageHeadingProps extends React.HTMLAttributes<HTMLDivElement> {
+interface HeadingProps extends React.HTMLAttributes<HTMLDivElement> {
 	as?: React.ElementType
 	separated?: boolean
 }
 
-function PageHeading({ className, children, as: Comp = 'section', separated = false, ...props }: PageHeadingProps) {
+function Heading({ className, children, as: Comp = 'section', separated = false, ...props }: HeadingProps) {
 	return (
 		<Comp className={cn('grid gap-1', className)} {...props}>
 			{children}
@@ -29,11 +29,11 @@ const headingVariants = cva('font-bold leading-tight tracking-light', {
 	}
 })
 
-interface PageTitleProps extends React.HTMLAttributes<HTMLHeadingElement>, VariantProps<typeof headingVariants> {
+interface HeadingTitleProps extends React.HTMLAttributes<HTMLHeadingElement>, VariantProps<typeof headingVariants> {
 	as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 
-function PageTitle({ className, size, as: Comp = 'h1', ...props }: PageTitleProps) {
+function HeadingTitle({ className, size, as: Comp = 'h2', ...props }: HeadingTitleProps) {
 	return <Comp className={cn(headingVariants({ size, className }))} {...props} />
 }
 
@@ -49,14 +49,14 @@ const descriptionVariants = cva('max-w-[750px] text-secondary', {
 	}
 })
 
-interface PageDescriptionProps
+interface HeadingDescriptionProps
 	extends React.HTMLAttributes<HTMLParagraphElement>,
 		VariantProps<typeof descriptionVariants> {
 	as?: React.ElementType
 }
 
-function PageDescription({ className, as: Comp = 'p', size, ...props }: PageDescriptionProps) {
+function HeadingDescription({ className, as: Comp = 'p', size, ...props }: HeadingDescriptionProps) {
 	return <Comp as="p" className={cn(descriptionVariants({ size, className }))} {...props} />
 }
 
-export { PageHeading, PageTitle, PageDescription }
+export { Heading, HeadingTitle, HeadingDescription }

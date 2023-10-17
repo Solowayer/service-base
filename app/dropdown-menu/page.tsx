@@ -1,7 +1,6 @@
 'use client'
 
-import { Person } from '@/components/icons'
-import { Badge } from '@/components/ui/badge'
+import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import {
 	DropdownMenu,
@@ -42,7 +41,7 @@ export default function Page() {
 					<Separator />
 					<DropdownMenuGroup>
 						<DropdownMenuItem>
-							<Person />
+							<Icons.person />
 							Profile
 						</DropdownMenuItem>
 						<DropdownMenuSub>

@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import * as SelectPrimitive from '@radix-ui/react-select'
-import { Check, ExpandMore } from '@/components/icons'
+import { Icons } from '@/components/icons'
 
 import { cn } from '@/lib/utils/cn'
 import { menuItemIndicatorStyles, menuItemStyles, menuStyles } from './menu'
@@ -26,7 +26,7 @@ const SelectTrigger = React.forwardRef<
 	>
 		{children}
 		<SelectPrimitive.Icon asChild>
-			<ExpandMore />
+			<Icons.chevronDown />
 		</SelectPrimitive.Icon>
 	</SelectPrimitive.Trigger>
 ))
@@ -68,7 +68,7 @@ const SelectLabel = React.forwardRef<
 	React.ElementRef<typeof SelectPrimitive.Label>,
 	React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
 >(({ className, ...props }, ref) => (
-	<SelectPrimitive.Label ref={ref} className={cn('p-2 text-secondary font-semibold', className)} {...props} />
+	<SelectPrimitive.Label ref={ref} className={cn('p-2 text-secondary font-medium', className)} {...props} />
 ))
 SelectLabel.displayName = SelectPrimitive.Label.displayName
 
@@ -82,7 +82,7 @@ const SelectItem = React.forwardRef<
 		{...props}
 	>
 		<SelectPrimitive.ItemIndicator className={cn(menuItemIndicatorStyles())}>
-			<Check />
+			<Icons.check />
 		</SelectPrimitive.ItemIndicator>
 
 		<SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>

@@ -2,7 +2,6 @@
 
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import React from 'react'
-// import { Check, ChevronRight, Circle } from '@/components/icons'
 import { cn } from '@/lib/utils/cn'
 import { menuItemIndicatorStyles, menuItemStyles, menuStyles } from './menu'
 import { Icons } from '@/components/icons'

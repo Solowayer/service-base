@@ -1,6 +1,8 @@
 import React from 'react'
-import { PageDescription, PageHeading, PageTitle } from '@/components/layouts/page-heading'
+import { HeadingDescription, Heading, HeadingTitle } from '@/components/layouts/page-heading'
 import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { Icons } from '@/components/icons'
 
 export const TempLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
 	return (
@@ -13,10 +15,16 @@ export const TempLink = ({ href, children }: { href: string; children: React.Rea
 export default function Home() {
 	return (
 		<div className="container flex flex-col gap-6 mt-10">
-			<PageHeading separated>
-				<PageTitle as="h2">Компоненти</PageTitle>
-				<PageDescription>Всі компоненти</PageDescription>
-			</PageHeading>
+			<Heading separated>
+				<div className="flex items-center justify-between">
+					<HeadingTitle as="h2">Компоненти</HeadingTitle>
+					<Button variant="ghost">
+						<Icons.add />
+						Додати щось
+					</Button>
+				</div>
+				<HeadingDescription>Всі компоненти</HeadingDescription>
+			</Heading>
 			<div className="flex flex-col">
 				<TempLink href="modals">Modal etc</TempLink>
 				<TempLink href="/table">Table Example</TempLink>
