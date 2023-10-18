@@ -50,8 +50,8 @@ export interface InputProps
 	icon?: React.ReactNode
 }
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-	{ variant, size, shape, label, icon, id, type = 'text', placeholder = 'Text here...', className, ...props },
+const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+	{ variant, size, shape, label, icon, type = 'text', className, ...props },
 	ref
 ) {
 	return (
@@ -60,11 +60,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 			<input
 				ref={ref}
 				className={cn(inputStyles({ variant, size, shape }), `${icon && '!pl-12 pr-4'}`, className)}
-				id={id}
 				type={type}
-				placeholder={placeholder}
 				{...props}
 			/>
 		</div>
 	)
 })
+Input.displayName = 'Input'
+
+export { Input }

@@ -2,7 +2,6 @@
 
 import { Button, buttonStyles } from '@/components/ui/button'
 import { Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerTrigger } from '@/components/ui/drawer'
-import { useState } from 'react'
 import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTrigger } from '@/components/ui/dialog'
 import {
 	AlertDialog,
@@ -13,27 +12,45 @@ import {
 	AlertDialogShell,
 	AlertDialogTrigger
 } from '@/components/ui/alert-dialog'
+import { Shell } from '@/components/shells/shell'
+import { Icons } from '@/components/icons'
+import { useState } from 'react'
+import { Input } from '@/components/ui/input'
 
 export default function Home() {
+	const [openDrawer, setOpenDrawer] = useState(false)
+
 	return (
 		<main className="flex flex-col p-24">
 			<div className="flex gap-2">
-				<Drawer>
+				<Drawer open={openDrawer} onOpenChange={setOpenDrawer}>
 					<DrawerTrigger>Open Drawer</DrawerTrigger>
-					<DrawerContent side="left">
-						<DrawerHeader
-							title="Ahah"
-							// description="Щоб відрахувати 14 пікселів від 1 rem (кореневого елемента HTML), вам потрібно визначити значення в rem, еквівалентне 14 пікселям. Для цього необхідно знати базовий розмір шрифту (font-size) для кореневого елемента."
-						/>
+					<DrawerContent side="bottom" className="h-full">
+						<div className="absolute right-4 top-4">
+							<Button shape="round" size="icon-medium" variant="clear" onClick={() => setOpenDrawer(false)}>
+								<Icons.close />
+							</Button>
+						</div>
+						{/* <DrawerHeader title="Ahah" /> */}
 						<DrawerBody>
-							Сьогоднішній день розпочався яскравим сонячним ранком. Птахи співають на гілках дерев, а вітер легенько
-							грає волоссям. Це чудовий день для нових пригод і відкриттів. Нехай ваша уява веде вас туди, де ви ніколи
-							не були раніше!
+							<Shell>
+								<div>
+									<Button variant="ghost" shape="round" onClick={() => setOpenDrawer(false)}>
+										<Icons.chevronLeft />
+										Назад
+									</Button>
+								</div>
+								<Input />
+								<Input />
+								Сьогоднішній день розпочався яскравим сонячним ранком. Птахи співають на гілках дерев, а вітер легенько
+								грає волоссям. Це чудовий день для нових пригод і відкриттів. Нехай ваша уява веде вас туди, де ви
+								ніколи не були раніше!
+							</Shell>
 						</DrawerBody>
-						<DrawerFooter>
+						{/* <DrawerFooter>
 							<Button variant="ghost">Скасувати</Button>
 							<Button>Підтвердити</Button>
-						</DrawerFooter>
+						</DrawerFooter> */}
 					</DrawerContent>
 				</Drawer>
 				<Dialog>

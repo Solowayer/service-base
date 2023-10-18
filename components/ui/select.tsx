@@ -21,7 +21,7 @@ const SelectTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
 	<SelectPrimitive.Trigger
 		ref={ref}
-		className={cn(buttonStyles({ variant: 'ghost' }), 'justify-between', className)}
+		className={cn(buttonStyles({ variant: 'ghost' }), 'w-full justify-between', className)}
 		{...props}
 	>
 		{children}
@@ -42,7 +42,7 @@ const SelectContent = React.forwardRef<
 			ref={ref}
 			className={cn(
 				menuStyles(),
-				'min-w-[8rem] p-0',
+				'relative min-w-[8rem] p-0',
 				position === 'popper' &&
 					'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
 				className

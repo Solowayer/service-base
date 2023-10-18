@@ -35,10 +35,12 @@ DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName
 const DrawerVariants = cva('fixed z-50 gap-4 bg-primary shadow-lg overflow-hidden', {
 	variants: {
 		side: {
-			top: 'inset-x-0 top-0 border-b',
-			bottom: 'inset-x-0 bottom-0 border-t',
+			top: 'inset-x-0 top-0 border-b data-[state=open]:animate-slide-in-top data-[state=closed]:animate-slide-out-top',
+			bottom:
+				'inset-x-0 bottom-0 border-t data-[state=open]:animate-slide-in-bottom data-[state=closed]:animate-slide-out-bottom',
 			left: 'inset-y-0 left-0 h-full w-1/3 border-r data-[state=open]:animate-slide-in-left data-[state=closed]:animate-slide-out-left',
-			right: 'inset-y-0 right-0 h-full w-3/4 border-l'
+			right:
+				'inset-y-0 right-0 h-full w-1/3 border-l data-[state=open]:animate-slide-in-right data-[state=closed]:animate-slide-out-right'
 		}
 	},
 	defaultVariants: {

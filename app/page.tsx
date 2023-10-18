@@ -18,7 +18,7 @@ export default function Home() {
 			<Heading separated>
 				<div className="flex items-center justify-between">
 					<HeadingTitle as="h2">Компоненти</HeadingTitle>
-					<Button variant="ghost">
+					<Button variant="ghost" shape="round">
 						<Icons.add />
 						Додати щось
 					</Button>
@@ -40,6 +40,9 @@ export default function Home() {
 				<TempLink href="/table">Table</TempLink>
 				<TempLink href="/combobox">Combobox</TempLink>
 				<TempLink href="/card">Card</TempLink>
+				<TempLink href="/pagination">Pagination</TempLink>
+				<TempLink href="/form">Form</TempLink>
+				<TempLink href="/tooltip">Tooltip</TempLink>
 			</div>
 		</div>
 	)
