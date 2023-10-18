@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeadingDescription, Heading, HeadingTitle } from '@/components/layouts/page-heading'
+import { HeadingDescription, Heading, HeadingTitle } from '@/components/ui/heading'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Icons } from '@/components/icons'
