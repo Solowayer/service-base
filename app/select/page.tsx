@@ -4,17 +4,24 @@ import React from 'react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
 export default function Page() {
+	const values = [
+		{ title: 'За останній тиждень', value: 'week' },
+		{ title: 'За останній місяць', value: 'month' },
+		{ title: 'За останній рік', value: 'year' }
+	]
+
 	return (
 		<>
-			<Select>
+			<Select defaultValue={values[0].value}>
 				<SelectTrigger className="w-[280px]">
-					<SelectValue placeholder="Theme" />
+					<SelectValue />
 				</SelectTrigger>
 				<SelectContent position="popper">
-					<SelectItem value="light">Light</SelectItem>
-					<SelectItem value="dark">Dark</SelectItem>
-					<SelectItem value="system">System</SelectItem>
-					<SelectItem value="cringe">Cringe</SelectItem>
+					{values.map(v => (
+						<SelectItem key={v.value} value={v.value}>
+							{v.title}
+						</SelectItem>
+					))}
 				</SelectContent>
 			</Select>
 		</>

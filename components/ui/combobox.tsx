@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import { Icons } from '../icons'
-import { useClickOutside } from '@/lib/hooks/useClickOutside'
+import { useClickOutside } from '@/lib/hooks/use-click-outside'
 import { Button } from './button'
 
 export interface ComboboxProps extends React.HTMLProps<HTMLDivElement> {

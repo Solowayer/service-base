@@ -7,54 +7,76 @@ import { Icons } from './icons'
 
 type PaginationProps = {
 	totalPages: number
+	siblingCount?: number
 }
 
-export default function Pagination() {
+export default function Pagination({ totalPages, siblingCount = 3 }: PaginationProps) {
 	const searchParams = useSearchParams()
 	const pathname = usePathname()
 	const router = useRouter()
 
 	const page = searchParams.get('page') ?? '1'
+	const dots = '...'
 
-	const range = (totalPages: number, page: number) => {
-		let pages: number[] = Array.from({ length: totalPages }, (_, index) => index + 1)
-		const maxVisiblePages = 9
-
-		if (totalPages > maxVisiblePages) {
-			const middlePage = Math.ceil(maxVisiblePages / 2)
-
-			if (page <= middlePage) {
-				pages = [...pages.slice(0, maxVisiblePages - 2), -1, totalPages]
-			} else if (page > totalPages - middlePage) {
-				pages = [1, -1, ...pages.slice(totalPages - maxVisiblePages + 2)]
-			} else {
-				const startPage = page - Math.floor((maxVisiblePages - 3) / 2)
-				const endPage = page + Math.floor((maxVisiblePages - 4) / 2)
-				pages = [1, -1, ...pages.slice(startPage, endPage), -1, totalPages]
-			}
+	const range = React.useMemo(() => {
+		const range = []
+		for (
+			let i = Math.max(2, Number(page) - siblingCount);
+			i <= Math.min(totalPages - 1, Number(page) + siblingCount);
+			i++
+		) {
+			range.push(i)
 		}
 
-		return pages
-	}
+		if (Number(page) - siblingCount > 2) {
+			range.unshift(dots)
+		}
+		if (Number(page) + siblingCount < totalPages - 1) {
+			range.push(dots)
+		}
+
+		range.unshift(1)
+		if (totalPages !== 1) {
+			range.push(totalPages)
+		}
+		console.log(range)
+		return range
+	}, [totalPages, page, siblingCount])
 
 	return (
 		<div className="w-full items-center justify-center flex gap-8">
 			<Button
+				variant="clear"
 				shape="round"
 				size="icon-medium"
 				onClick={() => {
-					router.push(`${pathname}?page=${Number(page) - 1}`)
+					router.push(`${pathname}?page=${Math.max(Number(page) - 1, 1)}`)
 				}}
+				disabled={Number(page) === 1}
 			>
 				<Icons.chevronLeft />
 			</Button>
-			<div className="flex gap-2"></div>
+			<div className="flex gap-2">
+				{range.map((pageNumber, index) => (
+					<Button
+						key={index}
+						size="icon-medium"
+						variant={`${Number(page) === pageNumber ? 'primary' : 'ghost'}`}
+						onClick={() => router.push(`${pathname}?page=${Number(pageNumber)}`)}
+						disabled={pageNumber === dots}
+					>
+						{pageNumber}
+					</Button>
+				))}
+			</div>
 			<Button
+				variant="clear"
 				shape="round"
 				size="icon-medium"
 				onClick={() => {
 					router.push(`${pathname}?page=${Number(page) + 1}`)
 				}}
+				disabled={Number(page) === totalPages}
 			>
 				<Icons.chevronRight />
 			</Button>
