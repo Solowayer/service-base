@@ -26,7 +26,7 @@ type Result<T> = {
 
 async function fetchProducts({ page, perPage }: { page: string; perPage: string }): Promise<Result<Product>> {
 	try {
-		const response = await axios.get('https://localhost:3150/api/Product', {
+		const response = await axios.get('https://localhost:10234/api/Product', {
 			params: { page, perPage },
 			withCredentials: true,
 			headers: {
@@ -43,9 +43,7 @@ async function fetchProducts({ page, perPage }: { page: string; perPage: string 
 
 export default async function Page({ searchParams }: { searchParams: { page: string } }) {
 	const page = searchParams['page'] ?? '1'
-	const products = await fetchProducts({ page, perPage: '3' })
-
-	console.log(page)
+	const products = await fetchProducts({ page, perPage: '5' })
 
 	return (
 		<>

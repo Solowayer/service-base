@@ -3,7 +3,6 @@
 import React from 'react'
 import { Icons } from '@/components/icons'
 import { Input } from '@/components/ui/input'
-import { usePathname, useRouter } from 'next/navigation'
 
 const people = [
 	'Анна Іванова',

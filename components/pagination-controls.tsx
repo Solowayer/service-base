@@ -2,20 +2,21 @@
 
 import React from 'react'
 import { Button } from '@/components/ui/button'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { Icons } from './icons'
 
 type PaginationProps = {
 	totalPages: number
+	page?: string
+	sort?: string
+	query?: string
 	siblingCount?: number
 }
 
-export default function Pagination({ totalPages, siblingCount = 3 }: PaginationProps) {
-	const searchParams = useSearchParams()
+export function Pagination({ totalPages, page, sort, query, siblingCount = 3 }: PaginationProps) {
 	const pathname = usePathname()
 	const router = useRouter()
 
-	const page = searchParams.get('page') ?? '1'
 	const dots = '...'
 
 	const range = React.useMemo(() => {
@@ -39,18 +40,37 @@ export default function Pagination({ totalPages, siblingCount = 3 }: PaginationP
 		if (totalPages !== 1) {
 			range.push(totalPages)
 		}
-		console.log(range)
 		return range
 	}, [totalPages, page, siblingCount])
 
+	const createQueryString = (params: Record<string, string | number | null>) => {
+		const newSearchParams = new URLSearchParams()
+
+		for (const [key, value] of Object.entries(params)) {
+			if (value === null) {
+				newSearchParams.delete(key)
+			} else {
+				newSearchParams.set(key, String(value))
+			}
+		}
+
+		return newSearchParams.toString()
+	}
+
 	return (
-		<div className="w-full items-center justify-center flex gap-8">
+		<div className="w-full items-center justify-between flex gap-8">
 			<Button
 				variant="clear"
 				shape="round"
 				size="icon-medium"
 				onClick={() => {
-					router.push(`${pathname}?page=${Math.max(Number(page) - 1, 1)}`)
+					router.push(
+						`${pathname}?${createQueryString({
+							page: Math.max(Number(page) - 1, 1),
+							query: query ?? null,
+							sort: sort ?? null
+						})}`
+					)
 				}}
 				disabled={Number(page) === 1}
 			>
@@ -62,7 +82,15 @@ export default function Pagination({ totalPages, siblingCount = 3 }: PaginationP
 						key={index}
 						size="icon-medium"
 						variant={`${Number(page) === pageNumber ? 'primary' : 'ghost'}`}
-						onClick={() => router.push(`${pathname}?page=${Number(pageNumber)}`)}
+						onClick={() =>
+							router.push(
+								`${pathname}?${createQueryString({
+									page: Number(pageNumber),
+									query: query ?? null,
+									sort: sort ?? null
+								})}`
+							)
+						}
 						disabled={pageNumber === dots}
 					>
 						{pageNumber}
@@ -74,7 +102,13 @@ export default function Pagination({ totalPages, siblingCount = 3 }: PaginationP
 				shape="round"
 				size="icon-medium"
 				onClick={() => {
-					router.push(`${pathname}?page=${Number(page) + 1}`)
+					router.push(
+						`${pathname}?${createQueryString({
+							page: Number(page) + 1,
+							query: query ?? null,
+							sort: sort ?? null
+						})}`
+					)
 				}}
 				disabled={Number(page) === totalPages}
 			>
