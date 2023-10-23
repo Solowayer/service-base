@@ -5,10 +5,10 @@ import React from 'react'
 import { Icons } from './icons'
 import { Input } from './ui/input'
 
-export function SearchInput({ searchValue }: { searchValue: string }) {
+export function SearchInput({ query }: { query: string }) {
 	const pathname = usePathname()
 	const router = useRouter()
-	const [searchQuery, setSearchQuery] = React.useState(searchValue)
+	const [searchQuery, setSearchQuery] = React.useState(query)
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.key === 'Enter') {

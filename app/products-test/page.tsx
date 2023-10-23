@@ -40,13 +40,13 @@ export default async function Page({
 	searchParams: { query: string; page: string; sort: ProductSortOptions }
 }) {
 	const page = searchParams['page'] ?? '1'
-	const searchValue = searchParams['query'] ?? ''
-	const sort = searchParams['sort'] ?? 'name_asc'
+	const query = searchParams['query'] ?? ''
+	const sort = searchParams['sort'] ?? sortOptions[0].value
 
 	const products = await fetchData({
 		page,
 		perPage: '4',
-		query: searchValue,
+		query,
 		sort
 	})
 
@@ -55,7 +55,7 @@ export default async function Page({
 	return (
 		<Shell>
 			<div className="flex items-center justify-between">
-				<SearchInput searchValue={searchValue} />
+				<SearchInput query={query} />
 				<SortSelect defaultValue={sortOptions[0].value} sortValue={sort} options={sortOptions} />
 			</div>
 			<div className="grid grid-cols-1 gap-4">
