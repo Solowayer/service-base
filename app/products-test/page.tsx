@@ -12,7 +12,7 @@ const agent = new https.Agent({
 
 async function fetchData({ page, perPage, query, sort }: ProductQueryParams): Promise<Result<Product>> {
 	try {
-		const response = await axios.get('https://localhost:11333/api/Product', {
+		const response = await axios.get('https://localhost:10049/api/Product', {
 			params: { page, perPage, query, sort },
 			withCredentials: true,
 			headers: {
@@ -23,7 +23,7 @@ async function fetchData({ page, perPage, query, sort }: ProductQueryParams): Pr
 		return response.data
 	} catch (error: any) {
 		console.log(error)
-		throw new Error(error?.response?.data?.message)
+		throw new Error(error)
 	}
 }
 
@@ -37,7 +37,7 @@ const sortOptions: SortOption<ProductSortOptions>[] = [
 export default async function Page({
 	searchParams
 }: {
-	searchParams: { query: string; page: string; sort: ProductSortOptions }
+	searchParams: { page: string; query: string; sort: ProductSortOptions }
 }) {
 	const page = searchParams['page'] ?? '1'
 	const query = searchParams['query'] ?? ''

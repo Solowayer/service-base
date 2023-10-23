@@ -42,9 +42,13 @@ function ProfileForm() {
 						<FormItem className="flex flex-col">
 							<FormLabel>Username</FormLabel>
 							<FormControl>
-								<Input placeholder="Щось там" {...field} />
+								<Input
+									placeholder={`${form.formState.errors.username ? '' : 'Вкажіть щось'}`}
+									{...field}
+									variant={`${form.formState.errors.username ? 'error' : 'primary'}`}
+								/>
 							</FormControl>
-							<FormDescription>This is description.</FormDescription>
+							{/* <FormDescription>This is description.</FormDescription> */}
 							<FormMessage />
 						</FormItem>
 					)}

@@ -26,7 +26,7 @@ export const inputStyles = cva(
 		variants: {
 			variant: {
 				primary: 'bg-input-primary',
-				error: 'bg-danger-light border-danger',
+				error: 'bg-danger-light border-danger focus:bg-danger-light',
 				success: 'bg-positive-light border-positive'
 			},
 			size: {
