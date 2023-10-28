@@ -12,7 +12,7 @@ const agent = new https.Agent({
 
 async function fetchData({ page, perPage, query, sort }: ProductQueryParams): Promise<Result<Product>> {
 	try {
-		const response = await axios.get('https://localhost:10049/api/Product', {
+		const response = await axios.get('https://localhost:4520/api/Product', {
 			params: { page, perPage, query, sort },
 			withCredentials: true,
 			headers: {

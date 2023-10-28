@@ -9,15 +9,18 @@ const config: Config = {
 	theme: {
 		screens: {
 			sm: '480px',
-			md: '768px',
+			md: '640px',
+			md2: '768px',
 			lg: '976px',
-			xl: '1600px'
+			xl: '1200px',
+			'2xl': '1440px',
+			'3xl': '1600px'
 		},
 		container: {
 			center: true,
 			padding: {
 				DEFAULT: '1rem',
-				sm: '2.5rem'
+				md: '2.5rem'
 			}
 		},
 		spacing: {
@@ -70,9 +73,9 @@ const config: Config = {
 			lg: ['16px', '24px'],
 			xl: ['20px', '24px'],
 			'2xl': ['24px', '28px'],
-			'3xl': ['32px', '36px'],
-			'4xl': ['40px', '48px'],
-			'5xl': ['48px', '56px']
+			'3xl': ['30px', '36px'],
+			'4xl': ['36px', '40px'],
+			'5xl': ['48px', '48px']
 		},
 		colors: {
 			transparent: 'var(--color-transparent)',
@@ -149,7 +152,12 @@ const config: Config = {
 			positive: 'rgba(var(--color-text-positive), <alpha-value>)',
 			warning: 'rgba(var(--color-text-warning), <alpha-value>)',
 			danger: 'rgba(var(--color-text-danger), <alpha-value>)',
-			disabled: 'rgba(var(--color-text-disabled), <alpha-value>)'
+			disabled: 'rgba(var(--color-text-disabled), <alpha-value>)',
+			link: {
+				DEFAULT: 'rgba(var(--color-text-link), <alpha-value>)',
+				hover: 'rgba(var(--color-text-link-hover), <alpha-value>)',
+				active: 'rgba(var(--color-text-link-active), <alpha-value>)'
+			}
 		}),
 		borderColor: ({ theme }) => ({
 			...theme('colors'),

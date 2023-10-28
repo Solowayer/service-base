@@ -6,7 +6,7 @@ const shellVariants = cva('flex flex-col gap-8 pb-8 pt-6 md:py-8', {
 	variants: {
 		variant: {
 			default: 'container',
-			centered: 'container flex h-[100dvh] max-w-[600px] flex-col justify-center',
+			centered: 'container flex h-[100dvh] max-w-[600px] flex-col justify-center'
 		}
 	},
 	defaultVariants: {

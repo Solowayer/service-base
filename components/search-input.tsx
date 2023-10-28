@@ -10,10 +10,9 @@ export function SearchInput({ query }: { query: string }) {
 	const router = useRouter()
 	const [searchQuery, setSearchQuery] = React.useState(query)
 
-	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if (e.key === 'Enter') {
-			router.push(searchQuery === '' ? pathname : `${pathname}?query=${searchQuery}`)
-		}
+	const handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault()
+		router.push(searchQuery === '' ? pathname : `${pathname}?query=${searchQuery}`)
 	}
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,18 +25,17 @@ export function SearchInput({ query }: { query: string }) {
 	}
 
 	return (
-		<>
+		<form onSubmit={handleSubmit}>
 			<Input
 				icon={<Icons.search />}
 				placeholder="Шукати"
 				shape="round"
 				value={searchQuery}
 				onChange={handleInputChange}
-				onKeyDown={handleKeyDown}
 				clearable
 				className="w-[260px]"
 				onClear={handleClearResults}
 			/>
-		</>
+		</form>
 	)
 }

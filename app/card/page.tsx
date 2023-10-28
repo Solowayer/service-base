@@ -1,10 +1,11 @@
+import { Shell } from '@/components/shells/shell'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 
 import React from 'react'
 
 export default function Page() {
 	return (
-		<>
+		<Shell>
 			<Card>
 				<CardHeader>
 					<CardTitle>Card Title</CardTitle>
@@ -17,6 +18,6 @@ export default function Page() {
 					<p>Card Footer</p>
 				</CardFooter>
 			</Card>
-		</>
+		</Shell>
 	)
 }

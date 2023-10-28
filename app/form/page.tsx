@@ -10,13 +10,13 @@ import { useForm } from 'react-hook-form'
 import { toast } from '@/components/ui/toast/use-toast'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
-const LEGAL_FORMS = ['ФОП', 'ТОВ']
+const LEGAL_FORMS = ['ФОП', 'ТОВ'] as const
 
 const FormSchema = z.object({
 	username: z.string().min(1, {
 		message: 'Username must be at least 2 characters.'
 	}),
-	legalForms: z.string()
+	legalForms: z.enum(LEGAL_FORMS, {})
 })
 
 function ProfileForm() {

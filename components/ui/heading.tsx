@@ -21,7 +21,9 @@ const headingVariants = cva('font-bold leading-tight tracking-light', {
 	variants: {
 		size: {
 			default: 'text-xl md:text-2xl',
-			lg: 'text-4xl md:text-5xl'
+			md: 'text-2xl md:text-3xl',
+			lg: 'text-3xl md:text-4xl',
+			xl: 'text-4xl md:text-5xl'
 		}
 	},
 	defaultVariants: {

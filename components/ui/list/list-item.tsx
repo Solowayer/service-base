@@ -2,34 +2,32 @@ import { cn } from '@/lib/utils/cn'
 import React, { forwardRef } from 'react'
 
 export interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
-	title: string
-	description?: string
+	children: React.ReactNode
 	startContent?: React.ReactNode
 	endContent?: React.ReactNode
 	disabled?: boolean
+	as?: React.ElementType
 }
 
 const ListItem = forwardRef<HTMLLIElement, ListItemProps>(function ListItem(
-	{ title, description, startContent, endContent, disabled = false, className },
+	{ children, startContent, endContent, disabled = false, className, as: Comp = 'li', ...props },
 	ref
 ) {
 	return (
-		<li
+		<Comp
 			ref={ref}
 			className={cn(
 				`w-full flex justify-between items-center gap-6 ${disabled ? 'opacity-50 pointer-events-none' : null}`,
 				className
 			)}
+			{...props}
 		>
 			<div className="flex items-center gap-4">
 				{startContent}
-				<div className="flex flex-col">
-					<span className="font-medium">{title}</span>
-					<span className="text-secondary text-sm">{description}</span>
-				</div>
+				{children}
 			</div>
 			{endContent}
-		</li>
+		</Comp>
 	)
 })
 ListItem.displayName = 'ListItem'

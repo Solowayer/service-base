@@ -43,6 +43,7 @@ export default function Home() {
 				<TempLink href="/pagination">Pagination</TempLink>
 				<TempLink href="/form">Form</TempLink>
 				<TempLink href="/tooltip">Tooltip</TempLink>
+				<TempLink href="/accordion">Accordion</TempLink>
 			</div>
 		</div>
 	)
