@@ -20,20 +20,24 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
 				caption: 'flex relative items-center justify-center pt-2',
 				caption_label: 'font-medium',
 				nav: 'flex',
-				nav_button: cn(buttonStyles({ variant: 'ghost', shape: 'round', size: 'icon-medium' }), 'absolute'),
+				nav_button: cn(buttonStyles({ variant: 'clear', shape: 'rectangle', size: 'icon-small' }), 'absolute'),
 				nav_button_previous: 'left-1 top-0',
 				nav_button_next: 'right-1 top-0',
 				table: 'w-full border-collapse',
 				head_row: 'flex',
-				head_cell: 'w-10 h-10 flex items-center justify-center rounded',
 				row: 'flex w-full mt-2',
+				head_cell: 'w-10 h-10 flex items-center justify-center rounded',
 				cell: 'w-10 h-10 flex items-center justify-center text-center font-normal p-0 relative',
-				day: 'w-10 h-10 aria-selected:bg-interactive-selected hover:bg-interactive-hover aria-selected:text-inverted rounded-full',
+				day: cn(
+					buttonStyles({ variant: 'clear', shape: 'rectangle', size: 'icon-medium' }),
+					'aria-selected:bg-interactive-selected aria-selected:text-inverted'
+				),
 				day_selected: 'bg-primary hover:bg-primary',
-				day_today: 'border border-selected',
+				day_today: 'bg-secondary',
 				day_outside: 'opacity-50',
 				day_disabled: 'opacity-50',
-				day_range_middle: 'aria-selected:bg-green-500 aria-selected:text-primary',
+				day_range_middle:
+					'aria-selected:bg-secondary aria-selected:text-primary rounded-none transition-all duration-400',
 				day_hidden: 'invisible',
 				...classNames
 			}}
@@ -46,5 +50,7 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
 	)
 }
 Calendar.displayName = 'Calendar'
+
+// day: 'w-10 h-10 aria-selected:bg-interactive-selected hover:bg-interactive-hover aria-selected:text-inverted rounded',
 
 export { Calendar }
