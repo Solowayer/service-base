@@ -57,7 +57,7 @@ const people = [
 export default function Page() {
 	return (
 		<div className="container">
-			<Combobox items={people} placeholder="Виберіть співробітника..." />
+			<Combobox options={people} placeholder="Виберіть співробітника..." />
 		</div>
 	)
 }

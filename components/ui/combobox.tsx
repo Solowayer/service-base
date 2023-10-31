@@ -1,26 +1,76 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import { Icons } from '../icons'
 import { useClickOutside } from '@/lib/hooks/use-click-outside'
 import { Button } from './button'
 
 export interface ComboboxProps extends React.HTMLProps<HTMLDivElement> {
-	items: string[]
+	options: string[]
 	// value: string
 	// setValue: (value: string) => void
 	placeholder: string
 }
 
-export const Combobox = ({ items, placeholder, ...props }: ComboboxProps) => {
-	const [open, setOpen] = useState(false)
-	const [value, setValue] = useState<string | null>(null)
-	const [searchTerm, setSearchTerm] = useState<string>('')
-	const comboboxRef = useRef<HTMLDivElement>(null)
-	const inputRef = useRef<HTMLInputElement>(null)
-	const optionsRef = useRef<HTMLUListElement>(null)
+export const Combobox = ({ options, placeholder, ...props }: ComboboxProps) => {
+	const [open, setOpen] = React.useState(false)
+	const [value, setValue] = React.useState<string | null>(null)
+	const [searchTerm, setSearchTerm] = React.useState<string>('')
+	const [activeIndex, setActiveIndex] = React.useState(0)
 
-	useEffect(() => {
+	const comboboxRef = React.useRef<HTMLDivElement>(null)
+	const inputRef = React.useRef<HTMLInputElement>(null)
+	const optionsRef = React.useRef<HTMLUListElement>(null)
+
+	const handleKeyDown = React.useCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
+		if (event.key === 'ArrowDown' && optionsRef.current) {
+			event.preventDefault()
+			const firstOption = optionsRef.current.querySelector('li')
+
+			if (firstOption) {
+				return (firstOption as HTMLLIElement).focus()
+			}
+		}
+	}, [])
+
+	const filteredOptions = React.useMemo(() => {
+		if (searchTerm === '') {
+			return options
+		} else {
+			return options.filter(option => {
+				return option.toLowerCase().includes(searchTerm.toLowerCase())
+			})
+		}
+	}, [options, searchTerm])
+
+	// const handleKeyDown = React.useCallback(
+	// 	(event: React.KeyboardEvent<HTMLInputElement>) => {
+	// 		if (!open) return
+
+	// 		const searchDataLength = filteredOptions.length - 1
+
+	// 		if (event.key === 'ArrowUp') {
+	// 			event.preventDefault()
+	// 			setActiveIndex(currentIndex => (currentIndex - 1 >= 0 ? currentIndex - 1 : searchDataLength))
+	// 		} else if (event.key === 'ArrowDown') {
+	// 			event.preventDefault()
+	// 			setActiveIndex(currentIndex => (currentIndex + 1 <= searchDataLength ? currentIndex + 1 : 0))
+	// 		} else if (event.key === 'Enter') {
+	// 			event.preventDefault()
+	// 			if (filteredOptions[activeIndex]) {
+	// 				setValue(filteredOptions[activeIndex])
+	// 				setOpen(false)
+	// 			}
+	// 		} else if (event.key === 'Escape') {
+	// 			event.preventDefault()
+	// 			setActiveIndex(0)
+	// 			setOpen(false)
+	// 		}
+	// 	},
+	// 	[open, activeIndex, filteredOptions]
+	// )
+
+	React.useEffect(() => {
 		if (open) {
 			if (inputRef.current) {
 				inputRef.current.focus()
@@ -29,13 +79,6 @@ export const Combobox = ({ items, placeholder, ...props }: ComboboxProps) => {
 	}, [open])
 
 	useClickOutside(comboboxRef, () => setOpen(false))
-
-	const filteredItems =
-		searchTerm === ''
-			? items
-			: items.filter(item => {
-					return item.toLowerCase().includes(searchTerm.toLowerCase())
-			  })
 
 	return (
 		<div ref={comboboxRef} {...props} className="flex flex-col gap-2 relative">
@@ -48,9 +91,9 @@ export const Combobox = ({ items, placeholder, ...props }: ComboboxProps) => {
 			</Button>
 			{open && (
 				<ComboboxContent>
-					<ComboboxInput ref={inputRef} value={searchTerm} onValueChange={setSearchTerm} />
+					<ComboboxInput ref={inputRef} value={searchTerm} onValueChange={setSearchTerm} onKeyDown={handleKeyDown} />
 					<ComboboxOptions ref={optionsRef} id="combobox-options">
-						{filteredItems?.map(item => (
+						{filteredOptions?.map((item, index) => (
 							<ComboboxOption
 								key={item}
 								selected={value === item}
@@ -150,6 +193,7 @@ export const ComboboxOption = React.forwardRef<HTMLLIElement, ComboboxOptionProp
 				role="option"
 				aria-selected={selected}
 				{...props}
+				tabIndex={-1}
 				className={`px-4 py-2 hover:bg-interactive-hover focus:border-selected cursor-pointer ${
 					selected && 'flex items-center justify-between font-medium bg-interactive-hover'
 				}`}
