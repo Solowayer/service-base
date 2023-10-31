@@ -1,4 +1,4 @@
-import { ProductImageCarousel } from '@/components/carousel'
+import { ProductImageCarousel } from '@/components/product-image-carousel'
 import { Shell } from '@/components/shells/shell'
 import React from 'react'
 
