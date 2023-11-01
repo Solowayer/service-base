@@ -22,17 +22,6 @@ export const Combobox = ({ options, placeholder, ...props }: ComboboxProps) => {
 	const inputRef = React.useRef<HTMLInputElement>(null)
 	const optionsRef = React.useRef<HTMLUListElement>(null)
 
-	const handleKeyDown = React.useCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
-		if (event.key === 'ArrowDown' && optionsRef.current) {
-			event.preventDefault()
-			const firstOption = optionsRef.current.querySelector('li')
-
-			if (firstOption) {
-				return (firstOption as HTMLLIElement).focus()
-			}
-		}
-	}, [])
-
 	const filteredOptions = React.useMemo(() => {
 		if (searchTerm === '') {
 			return options
@@ -43,32 +32,58 @@ export const Combobox = ({ options, placeholder, ...props }: ComboboxProps) => {
 		}
 	}, [options, searchTerm])
 
-	// const handleKeyDown = React.useCallback(
-	// 	(event: React.KeyboardEvent<HTMLInputElement>) => {
-	// 		if (!open) return
+	const handleKeyDown = React.useCallback(
+		(event: KeyboardEvent) => {
+			if (!open) return
 
-	// 		const searchDataLength = filteredOptions.length - 1
+			const searchDataLength = filteredOptions.length - 1
 
-	// 		if (event.key === 'ArrowUp') {
-	// 			event.preventDefault()
-	// 			setActiveIndex(currentIndex => (currentIndex - 1 >= 0 ? currentIndex - 1 : searchDataLength))
-	// 		} else if (event.key === 'ArrowDown') {
-	// 			event.preventDefault()
-	// 			setActiveIndex(currentIndex => (currentIndex + 1 <= searchDataLength ? currentIndex + 1 : 0))
-	// 		} else if (event.key === 'Enter') {
-	// 			event.preventDefault()
-	// 			if (filteredOptions[activeIndex]) {
-	// 				setValue(filteredOptions[activeIndex])
-	// 				setOpen(false)
-	// 			}
-	// 		} else if (event.key === 'Escape') {
-	// 			event.preventDefault()
-	// 			setActiveIndex(0)
-	// 			setOpen(false)
-	// 		}
-	// 	},
-	// 	[open, activeIndex, filteredOptions]
-	// )
+			switch (event.key) {
+				case 'ArrowUp':
+					event.preventDefault()
+					setActiveIndex(currentIndex => (currentIndex - 1 >= 0 ? currentIndex - 1 : searchDataLength))
+					break
+				case 'ArrowDown':
+					event.preventDefault()
+					setActiveIndex(currentIndex => (currentIndex + 1 <= searchDataLength ? currentIndex + 1 : 0))
+					break
+				case 'Enter':
+					event.preventDefault()
+					if (filteredOptions[activeIndex]) {
+						setValue(filteredOptions[activeIndex])
+						setOpen(false)
+						setActiveIndex(-1)
+					}
+					break
+				case 'Escape':
+					event.preventDefault()
+					setOpen(false)
+					setActiveIndex(-1)
+					break
+				default:
+					break
+			}
+		},
+		[open, activeIndex, filteredOptions]
+	)
+
+	React.useEffect(() => {
+		if (open) {
+			const activeElement = document.querySelector(`[data-index='${activeIndex}']`) as HTMLLIElement
+
+			if (activeElement) activeElement.focus()
+		} else {
+			setActiveIndex(-1)
+		}
+	}, [open, activeIndex])
+
+	React.useEffect(() => {
+		document.addEventListener('keydown', handleKeyDown)
+
+		return () => {
+			document.removeEventListener('keydown', handleKeyDown)
+		}
+	}, [handleKeyDown])
 
 	React.useEffect(() => {
 		if (open) {
@@ -91,7 +106,7 @@ export const Combobox = ({ options, placeholder, ...props }: ComboboxProps) => {
 			</Button>
 			{open && (
 				<ComboboxContent>
-					<ComboboxInput ref={inputRef} value={searchTerm} onValueChange={setSearchTerm} onKeyDown={handleKeyDown} />
+					<ComboboxInput ref={inputRef} value={searchTerm} onValueChange={setSearchTerm} />
 					<ComboboxOptions ref={optionsRef} id="combobox-options">
 						{filteredOptions?.map((item, index) => (
 							<ComboboxOption
@@ -101,6 +116,7 @@ export const Combobox = ({ options, placeholder, ...props }: ComboboxProps) => {
 									setValue(item)
 									setOpen(false)
 								}}
+								data-index={index}
 							>
 								{item}
 							</ComboboxOption>
@@ -194,7 +210,7 @@ export const ComboboxOption = React.forwardRef<HTMLLIElement, ComboboxOptionProp
 				aria-selected={selected}
 				{...props}
 				tabIndex={-1}
-				className={`px-4 py-2 hover:bg-interactive-hover focus:border-selected cursor-pointer ${
+				className={`outline-none px-4 py-2 hover:bg-interactive-hover focus:bg-interactive-hover cursor-pointer ${
 					selected && 'flex items-center justify-between font-medium bg-interactive-hover'
 				}`}
 			>
