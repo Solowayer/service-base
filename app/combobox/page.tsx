@@ -1,4 +1,6 @@
+import { Shell } from '@/components/shells/shell'
 import { Combobox } from '@/components/ui/combobox'
+import { ComboboxTest } from '@/components/ui/combobox-test'
 import React from 'react'
 
 const people = [
@@ -56,8 +58,9 @@ const people = [
 
 export default function Page() {
 	return (
-		<div className="container">
-			<Combobox options={people} placeholder="Виберіть співробітника..." />
-		</div>
+		<Shell>
+			<ComboboxTest options={people} placeholder="Виберіть співробітника" />
+			<ComboboxTest options={people} placeholder="Виберіть співробітника" mode="multiple" />
+		</Shell>
 	)
 }
