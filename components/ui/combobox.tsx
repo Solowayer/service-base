@@ -1,16 +1,18 @@
 'use client'
 
-import React, { SetStateAction } from 'react'
+import React from 'react'
 import { Icons } from '../icons'
 import { useClickOutside } from '@/lib/hooks/use-click-outside'
 import { Button } from './button'
 import { Badge } from './badge'
 import { cn } from '@/lib/utils/cn'
+import { menuItemStyles } from './menu'
 
 interface SingleModeProps<T> {
 	mode: 'single'
 	value: T | null
 	setValue: React.Dispatch<React.SetStateAction<T | null>>
+	onChange?: (value: T | null) => void
 	values?: never
 	setValues?: never
 }
@@ -19,11 +21,14 @@ interface MultipleModeProps<T> {
 	mode: 'multiple'
 	values: Array<T>
 	setValues: React.Dispatch<React.SetStateAction<Array<T>>>
+	onChange?: (values: Array<T> | null) => void
 	value?: never
 	setValue?: never
 }
 
 type ComboboxProps = {
+	// isOpen?: boolean
+	// onOpenChange?: (isOpen: boolean) => void
 	options: string[]
 	placeholder: string
 } & (SingleModeProps<string> | MultipleModeProps<string>)
@@ -35,6 +40,7 @@ export const Combobox = ({
 	setValue,
 	values,
 	setValues,
+	onChange,
 	placeholder,
 	...props
 }: ComboboxProps) => {
@@ -45,6 +51,11 @@ export const Combobox = ({
 	const comboboxRef = React.useRef<HTMLDivElement>(null)
 	const inputRef = React.useRef<HTMLInputElement>(null)
 	const optionsRef = React.useRef<HTMLUListElement>(null)
+
+	React.useEffect(() => {
+		if (onChange && mode === 'multiple') onChange(values?.length ? values : null)
+		if (onChange && mode === 'single') onChange(value ?? null)
+	}, [mode, onChange, value, values])
 
 	const handleSelect = React.useCallback(
 		(item: string, index: number) => {
@@ -178,17 +189,15 @@ export const Combobox = ({
 				{values.map((item, index) => (
 					<Badge key={index}>
 						{item}
-						<button
-							className="h-auto hover:scale-110 transition-transform duration-100"
+						<Icons.close
+							className="w-5 h-5 hover:scale-110 transition-transform duration-100"
 							onClick={e => {
 								e.stopPropagation()
 								if (values.includes(item)) {
 									setValues(prevValues => prevValues.filter(value => value !== item))
 								}
 							}}
-						>
-							<Icons.close />
-						</button>
+						/>
 					</Badge>
 				))}
 			</div>
@@ -327,12 +336,10 @@ export const ComboboxOption = React.forwardRef<HTMLLIElement, ComboboxOptionProp
 				aria-selected={selected}
 				{...props}
 				tabIndex={-1}
-				className={`outline-none px-4 py-2 rounded hover:bg-interactive-hover focus:bg-interactive-hover cursor-pointer focus:ring-offset-white focus:ring-black focus:ring-offset-2 focus:ring-2 focus:z-50 ${
-					selected && 'flex items-center justify-between font-medium'
-				}`}
+				className={`${menuItemStyles()} ${selected && 'flex items-center justify-between font-medium'}`}
 			>
 				<span>{children}</span>
-				{selected && <Icons.check />}
+				{selected ? <Icons.check /> : null}
 			</li>
 		)
 	}
