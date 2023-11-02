@@ -1,7 +1,7 @@
 'use client'
 
 import { Shell } from '@/components/shells/shell'
-import { Combobox } from '@/components/ui/combobox'
+import { ComboboxTest } from '@/components/ui/combobox-test'
 import React from 'react'
 
 const people = [
@@ -81,34 +81,30 @@ const processors = [
 ]
 
 export default function Page() {
-	const [value, setValue] = React.useState<string | null>(null)
-	const [values, setValues] = React.useState<string[]>([])
-	const [open, setOpen] = React.useState<boolean>(false)
+	const [newValues, setNewValues] = React.useState<{ label: string; value: string }[]>([])
+	const [newValue, setNewValue] = React.useState<{ label: string; value: string } | null>(null)
 
-	console.log(values)
+	console.log(newValue)
 
 	return (
 		<Shell className="max-w-[500px]">
-			<button onClick={() => setOpen(!open)}>Open</button>
-			<Combobox
-				options={people}
-				value={value}
-				setValue={setValue}
-				// onChange={value => alert(value)}
-				placeholder="Виберіть співробітника"
-				mode="single"
-			/>
-			<Combobox
-				options={people}
-				values={values}
-				setValues={setValues}
-				// onChange={values => alert(values)}
-				placeholder="Виберіть співробітника"
-				mode="multiple"
-			/>
-			{/* {values.map((value, i) => (
-				<span key={i}>{value}</span>
-			))} */}
+			<form>
+				<ComboboxTest
+					mode="single"
+					options={processors}
+					value={newValue}
+					setValue={setNewValue}
+					onChange={newValue => console.log(newValue?.value)}
+					placeholder="Виберіть процесор"
+				/>
+				<ComboboxTest
+					mode="multiple"
+					options={processors}
+					values={newValues}
+					setValues={setNewValues}
+					placeholder="Виберіть процесор"
+				/>
+			</form>
 		</Shell>
 	)
 }
