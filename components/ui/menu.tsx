@@ -1,7 +1,4 @@
-import { cn } from '@/lib/utils/cn'
-import { VariantProps, cva } from 'class-variance-authority'
-import Link from 'next/link'
-import React from 'react'
+import { cva } from 'class-variance-authority'
 
 export const menuStyles = cva(['flex flex-col gap-0.5 border bg-primary rounded p-2 shadow-md z-[100] overflow-hidden'])
 
@@ -22,18 +19,3 @@ export const menuItemStyles = cva(
 )
 
 export const menuItemIndicatorStyles = cva(['absolute right-2 flex items-center justify-center'])
-
-export interface MenuItemProps
-	extends React.ComponentPropsWithoutRef<typeof Link>,
-		VariantProps<typeof menuItemStyles> {}
-
-const NavItem = React.forwardRef<React.ElementRef<typeof Link>, MenuItemProps>(
-	({ className, href, offset, selected, children, ...props }, ref) => (
-		<Link ref={ref} href={href} {...props}>
-			<span className={cn(menuItemStyles({ offset, selected }), className)}>{children}</span>
-		</Link>
-	)
-)
-NavItem.displayName = 'NavItem'
-
-export { NavItem }

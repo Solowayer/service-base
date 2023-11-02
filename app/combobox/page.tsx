@@ -1,6 +1,7 @@
+'use client'
+
 import { Shell } from '@/components/shells/shell'
 import { Combobox } from '@/components/ui/combobox'
-import { ComboboxTest } from '@/components/ui/combobox-test'
 import React from 'react'
 
 const people = [
@@ -57,10 +58,19 @@ const people = [
 ]
 
 export default function Page() {
+	const [value, setValue] = React.useState<string | null>(null)
+	const [values, setValues] = React.useState<string[]>([])
+
 	return (
-		<Shell>
-			<ComboboxTest options={people} placeholder="Виберіть співробітника" />
-			<ComboboxTest options={people} placeholder="Виберіть співробітника" mode="multiple" />
+		<Shell className="max-w-[500px]">
+			<Combobox options={people} value={value} setValue={setValue} placeholder="Виберіть співробітника" mode="single" />
+			<Combobox
+				options={people}
+				values={values}
+				setValues={setValues}
+				placeholder="Виберіть співробітника"
+				mode="multiple"
+			/>
 		</Shell>
 	)
 }
