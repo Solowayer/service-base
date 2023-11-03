@@ -1,61 +1,8 @@
 'use client'
 
 import { Shell } from '@/components/shells/shell'
-import { ComboboxTest } from '@/components/ui/combobox-test'
+import { Combobox } from '@/components/ui/combobox'
 import React from 'react'
-
-const people = [
-	'Анна Іванова',
-	'Олексій Петренко',
-	'Марія Сидоренко',
-	'Віталій Григоренко',
-	'Ірина Коваль',
-	'Дмитро Семенов',
-	'Ольга Ткаченко',
-	'Павло Мельник',
-	'Яна Павленко',
-	'Михайло Шевченко',
-	'Аліна Козак',
-	'Ігор Білецький',
-	'Наталія Лисенко',
-	'Андрій Мороз',
-	'Лариса Шевчук',
-	'Олександр Ковальчук',
-	'Тетяна Даниленко',
-	'Роман Козлов',
-	'Ніна Зайцева',
-	'Євген Гордієнко',
-	'Марина Лавренко',
-	'Олесь Марченко',
-	'Катерина Полякова',
-	'Сергій Шульга',
-	'Дарина Кузьменко',
-	'Анатолій Савченко',
-	'Лідія Тихонова',
-	'Андрій Якименко',
-	'Тамара Костенко',
-	'Максим Ігнатьєв',
-	'Валентина Федорова',
-	'Юрій Коноваленко',
-	'Світлана Бондаренко',
-	'Артем Дорошенко',
-	'Марія Гончарова',
-	'Денис Зінченко',
-	'Людмила Мельничук',
-	'Володимир Федорчук',
-	'Ангеліна Тимченко',
-	'Олег Кравченко',
-	'Галина Мазур',
-	'Сергій Павлюченко',
-	'Тетяна Гаврилюк',
-	'Євгенія Михайленко',
-	'Микола Соколов',
-	'Оксана Литвиненко',
-	'Арсен Марчук',
-	'Софія Руденко',
-	'Вікторія Жукова',
-	'Максим Білоус'
-]
 
 const processors = [
 	{ label: 'Intel Core i9-10900K', value: 'intel_core_i9_10900k' },
@@ -81,27 +28,30 @@ const processors = [
 ]
 
 export default function Page() {
-	const [newValues, setNewValues] = React.useState<{ label: string; value: string }[]>([])
 	const [newValue, setNewValue] = React.useState<{ label: string; value: string } | null>(null)
 
-	console.log(newValue)
+	const [newValues, setNewValues] = React.useState<{ label: string; value: string }[]>([])
 
 	return (
-		<Shell className="max-w-[500px]">
+		<Shell className="max-w-[1000px]">
 			<form>
-				<ComboboxTest
+				<Combobox
 					mode="single"
 					options={processors}
 					value={newValue}
 					setValue={setNewValue}
-					onChange={newValue => console.log(newValue?.value)}
+					onChange={option => console.log(option?.value)}
 					placeholder="Виберіть процесор"
 				/>
-				<ComboboxTest
+				<Combobox
 					mode="multiple"
 					options={processors}
 					values={newValues}
 					setValues={setNewValues}
+					onChange={options => {
+						const selectedValues = options?.map(option => option.value)
+						console.log(selectedValues)
+					}}
 					placeholder="Виберіть процесор"
 				/>
 			</form>

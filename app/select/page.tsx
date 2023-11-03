@@ -12,7 +12,7 @@ export default function Page() {
 
 	return (
 		<>
-			<Select defaultValue={values[0].value}>
+			<Select onValueChange={value => console.log(value)} defaultValue={values[0].value}>
 				<SelectTrigger className="w-[280px]">
 					<SelectValue />
 				</SelectTrigger>

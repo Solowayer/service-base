@@ -8,40 +8,45 @@ import { Badge } from './badge'
 import { cn } from '@/lib/utils/cn'
 import { menuItemStyles } from './menu'
 
-interface SingleModeProps<T> {
+interface Option {
+	label: string
+	value: string
+}
+
+interface SingleModeProps {
 	mode: 'single'
-	value: T | null
-	setValue: React.Dispatch<React.SetStateAction<T | null>>
-	onChange?: (value: T | null) => void
+	value: Option | null
+	setValue: React.Dispatch<React.SetStateAction<Option | null>>
+	onChange?: (value: Option | null) => void
 	values?: never
 	setValues?: never
 }
 
-interface MultipleModeProps<T> {
+interface MultipleModeProps {
 	mode: 'multiple'
-	values: Array<T>
-	setValues: React.Dispatch<React.SetStateAction<Array<T>>>
-	onChange?: (values: Array<T> | null) => void
+	values: Option[]
+	setValues: React.Dispatch<React.SetStateAction<Option[]>>
+	onChange?: (values: Option[] | null) => void
 	value?: never
 	setValue?: never
 }
 
 type ComboboxProps = {
-	// isOpen?: boolean
-	// onOpenChange?: (isOpen: boolean) => void
-	options: string[]
+	options: Option[]
 	placeholder: string
-} & (SingleModeProps<string> | MultipleModeProps<string>)
+	children?: (options: Option) => React.ReactNode
+} & (SingleModeProps | MultipleModeProps)
 
 export const Combobox = ({
 	options,
+	placeholder,
+	children,
 	mode,
 	value,
 	setValue,
 	values,
 	setValues,
 	onChange,
-	placeholder,
 	...props
 }: ComboboxProps) => {
 	const [open, setOpen] = React.useState(false)
@@ -58,20 +63,21 @@ export const Combobox = ({
 	}, [mode, onChange, value, values])
 
 	const handleSelect = React.useCallback(
-		(item: string, index: number) => {
+		(selectedOption: Option, index: number) => {
 			if (mode === 'single') {
-				setValue(item)
+				setValue(selectedOption)
 				setOpen(false)
 				setActiveIndex(index)
 			}
 
 			if (mode === 'multiple') {
-				if (values.includes(item)) {
+				// Для більшої універсальності можна позабирати value
+				if (values.find(option => option === selectedOption)) {
 					setActiveIndex(index)
-					setValues(prevValues => prevValues.filter(value => value !== item))
+					setValues(prevValues => prevValues.filter(value => value !== selectedOption))
 				} else {
 					setActiveIndex(index)
-					setValues(prevValues => [...prevValues, item])
+					setValues(prevValues => [...prevValues, selectedOption])
 				}
 			}
 		},
@@ -83,7 +89,7 @@ export const Combobox = ({
 			return options
 		} else {
 			return options.filter(option => {
-				return option.toLowerCase().includes(searchTerm.toLowerCase())
+				return option.label.toLowerCase().includes(searchTerm.toLowerCase())
 			})
 		}
 	}, [options, searchTerm])
@@ -183,19 +189,21 @@ export const Combobox = ({
 
 	const buttonContent =
 		mode === 'single' ? (
-			value ?? placeholder
+			value ? (
+				value.label
+			) : (
+				placeholder
+			)
 		) : values.length ? (
 			<div className="flex flex-wrap gap-2">
 				{values.map((item, index) => (
 					<Badge key={index}>
-						{item}
+						{item.label}
 						<Icons.close
 							className="w-5 h-5 hover:scale-110 transition-transform duration-100"
 							onClick={e => {
 								e.stopPropagation()
-								if (values.includes(item)) {
-									setValues(prevValues => prevValues.filter(value => value !== item))
-								}
+								setValues(prevValues => prevValues.filter(value => value !== item))
 							}}
 						/>
 					</Badge>
@@ -208,6 +216,7 @@ export const Combobox = ({
 	return (
 		<div ref={comboboxRef} {...props} className={cn('flex flex-col gap-1 relative', {})} id="combobox">
 			<Button
+				type="button"
 				variant="ghost"
 				className={cn('justify-between', {
 					'h-auto p-4': mode === 'multiple' && values.length > 1
@@ -228,18 +237,19 @@ export const Combobox = ({
 				<ComboboxContent className={cn('', {})}>
 					<ComboboxInput ref={inputRef} value={searchTerm} onValueChange={setSearchTerm} />
 					<ComboboxOptions ref={optionsRef} id="combobox-options">
-						{filteredOptions?.map((item, index) => (
+						{filteredOptions?.map((option, index) => (
 							<ComboboxOption
-								key={item}
-								selected={mode === 'single' ? value === item : values.includes(item)}
+								key={index}
+								selected={mode === 'single' ? value === option : values.includes(option)}
 								onClick={e => {
 									e.preventDefault()
 									e.stopPropagation()
-									handleSelect(item, index)
+									handleSelect(option, index)
 								}}
 								data-index={index}
+								id={`option-${index}`}
 							>
-								{item}
+								{children ? children(option) : option.label}
 							</ComboboxOption>
 						))}
 					</ComboboxOptions>
@@ -338,7 +348,7 @@ export const ComboboxOption = React.forwardRef<HTMLLIElement, ComboboxOptionProp
 				tabIndex={-1}
 				className={`${menuItemStyles()} ${selected && 'flex items-center justify-between font-medium'}`}
 			>
-				<span>{children}</span>
+				<div>{children}</div>
 				{selected ? <Icons.check /> : null}
 			</li>
 		)
