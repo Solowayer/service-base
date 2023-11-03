@@ -51,6 +51,4 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
 }
 Calendar.displayName = 'Calendar'
 
-// day: 'w-10 h-10 aria-selected:bg-interactive-selected hover:bg-interactive-hover aria-selected:text-inverted rounded',
-
 export { Calendar }

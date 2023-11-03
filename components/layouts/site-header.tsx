@@ -33,7 +33,7 @@ export default function SiteHeader({ user }: Props) {
 					Увійти
 				</ButtonLink>
 				<Button variant="clear" size="icon-medium">
-					<Icons.cart />
+					<Icons.cartOutlined />
 				</Button>
 			</div>
 		</div>
