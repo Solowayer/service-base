@@ -32,7 +32,8 @@ const Icon = ({ size, className, children, ...props }: IconProps) => {
 }
 
 export const Icons = {
-	// SINGLE
+	// ! SINGLE
+
 	sun: (props: IconProps) => {
 		return (
 			<Icon {...props}>
@@ -358,7 +359,7 @@ export const Icons = {
 		)
 	},
 
-	// GROUP
+	// ! GROUP
 
 	// CART
 	cartOutlined: (props: IconProps) => {

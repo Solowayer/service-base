@@ -52,7 +52,7 @@ export function ProductImageCarousel({ images, className, options, ...props }: P
 				aria-roledescription="placeholder"
 				className={cn('flex aspect-square h-full w-full flex-1 items-center justify-center bg-secondary', className)}
 			>
-				<Icons.star className="h-10 w-10" aria-hidden="true" />
+				<Icons.starOutlined className="h-10 w-10" aria-hidden="true" />
 			</div>
 		)
 	}

@@ -4,7 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 export default function Page() {
 	return (
 		<>
-			<Accordion type=''>
+			<Accordion type="multiple">
 				<AccordionItem value="item-1">
 					<AccordionTrigger>Важлива інформація</AccordionTrigger>
 					<AccordionContent>
