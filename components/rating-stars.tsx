@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icons } from './icons'
 
-export default function RatingStars({ rating = 1 }: { rating: number; totalStars?: number }) {
+export function RatingStars({ rating = 1 }: { rating: number }) {
 	const totalStars = 5
 
 	const filledStars = Array.from({ length: rating }, (_, index) => (
