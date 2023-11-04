@@ -1,14 +1,18 @@
 'use client'
 
-import { RatingButtons } from '@/components/rating-buttons'
-import { RatingStars } from '@/components/rating-stars'
+import { Rating } from '@/components/rating'
 import React from 'react'
 
 export default function Page() {
 	return (
 		<div>
-			<RatingStars rating={4} />
-			<RatingButtons onChange={value => console.log(value)} />
+			<Rating readonly ratingValue={4} />
+			<Rating
+				onChange={value => console.log(value)}
+				itemStyle="p-4 rounded"
+				activeStarStyle="w-10 h-10"
+				defaultStarStyle="w-10 h-10"
+			/>
 		</div>
 	)
 }
