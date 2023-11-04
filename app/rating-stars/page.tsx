@@ -6,7 +6,6 @@ export default function Page() {
 	return (
 		<div>
 			<RatingStars rating={4} />
-			<Icons.info />
 		</div>
 	)
 }
