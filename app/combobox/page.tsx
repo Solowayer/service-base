@@ -2,6 +2,7 @@
 
 import { Shell } from '@/components/shells/shell'
 import { Combobox } from '@/components/ui/combobox'
+import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
 
 const processors = [
@@ -28,33 +29,46 @@ const processors = [
 ]
 
 export default function Page() {
-	const [newValue, setNewValue] = React.useState<{ label: string; value: string } | null>(null)
-
-	const [newValues, setNewValues] = React.useState<{ label: string; value: string }[]>([])
+	const pathname = usePathname()
+	const router = useRouter()
+	const [singleValue, setSingleValue] = React.useState<{ label: string; value: string } | null>(null)
+	const [multipleValues, setMultipleValues] = React.useState<{ label: string; value: string }[]>([])
 
 	return (
 		<Shell className="max-w-[1000px]">
-			<form>
-				<Combobox
-					mode="single"
-					options={processors}
-					value={newValue}
-					setValue={setNewValue}
-					onChange={option => console.log(option?.value)}
-					placeholder="Виберіть процесор"
-				/>
-				<Combobox
-					mode="multiple"
-					options={processors}
-					values={newValues}
-					setValues={setNewValues}
-					onChange={options => {
-						const selectedValues = options?.map(option => option.value)
-						console.log(selectedValues)
-					}}
-					placeholder="Виберіть процесор"
-				/>
-			</form>
+			<Combobox
+				mode="single"
+				options={processors}
+				value={singleValue}
+				setValue={setSingleValue}
+				onChange={value => {
+					if (value !== null) {
+						router.push(`${pathname}?value=${value.value}`)
+						// alert(value.value)
+					} else {
+						router.push(`${pathname}`)
+					}
+				}}
+				placeholder="Виберіть процесор"
+			/>
+			<Combobox
+				mode="multiple"
+				options={processors}
+				values={multipleValues}
+				setValues={setMultipleValues}
+				placeholder="Виберіть процесор"
+			/>
+
+			<div>Single combobox: {(singleValue?.label, singleValue?.value)}</div>
+			<div>
+				Single combobox:{' '}
+				{multipleValues?.map((value, index) => (
+					<div key={index}>
+						<span>{value.label}</span>
+						<span>{value.value}</span>
+					</div>
+				))}
+			</div>
 		</Shell>
 	)
 }

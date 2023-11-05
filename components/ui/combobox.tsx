@@ -71,7 +71,6 @@ export const Combobox = ({
 			}
 
 			if (mode === 'multiple') {
-				// Для більшої універсальності можна позабирати value
 				if (values.find(option => option === selectedOption)) {
 					setActiveIndex(index)
 					setValues(prevValues => prevValues.filter(value => value !== selectedOption))
@@ -214,8 +213,9 @@ export const Combobox = ({
 		)
 
 	return (
-		<div ref={comboboxRef} {...props} className={cn('flex flex-col gap-1 relative', {})} id="combobox">
+		<div ref={comboboxRef} {...props} className={cn('flex flex-col gap-1 relative', {})} id={`combobox-${mode}`}>
 			<Button
+				id={`combobox-button-${mode}`}
 				type="button"
 				variant="ghost"
 				className={cn('justify-between', {

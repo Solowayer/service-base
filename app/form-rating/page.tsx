@@ -15,8 +15,8 @@ const FormSchema = z.object({
 		.number()
 		.min(1, { message: 'Вкажіть рейтинг від 1 до 5' })
 		.max(5, { message: 'Вкажіть рейтинг від 1 до 5' }),
-	text: z.string().min(1, {
-		message: 'Username must be at least 2 characters.'
+	text: z.string().trim().min(1, {
+		message: 'Напишіть щось пліз'
 	})
 })
 
