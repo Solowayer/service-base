@@ -57,17 +57,15 @@ export const Combobox = ({
 	const inputRef = React.useRef<HTMLInputElement>(null)
 	const optionsRef = React.useRef<HTMLUListElement>(null)
 
-	React.useEffect(() => {
-		if (onChange && mode === 'multiple') onChange(values?.length ? values : null)
-		if (onChange && mode === 'single') onChange(value ?? null)
-	}, [mode, onChange, value, values])
-
 	const handleSelect = React.useCallback(
 		(selectedOption: Option, index: number) => {
 			if (mode === 'single') {
 				setValue(selectedOption)
 				setOpen(false)
 				setActiveIndex(index)
+				if (onChange) {
+					onChange(selectedOption) // Викликаємо onChange для режиму single при зміні значення
+				}
 			}
 
 			if (mode === 'multiple') {
@@ -78,9 +76,12 @@ export const Combobox = ({
 					setActiveIndex(index)
 					setValues(prevValues => [...prevValues, selectedOption])
 				}
+				if (onChange) {
+					onChange(values) // Викликаємо onChange для режиму multiple при зміні значень
+				}
 			}
 		},
-		[mode, setValue, setValues, values]
+		[mode, onChange, setValue, setValues, values]
 	)
 
 	const filteredOptions = React.useMemo(() => {

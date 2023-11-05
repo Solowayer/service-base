@@ -29,8 +29,6 @@ const processors = [
 ]
 
 export default function Page() {
-	const pathname = usePathname()
-	const router = useRouter()
 	const [singleValue, setSingleValue] = React.useState<{ label: string; value: string } | null>(null)
 	const [multipleValues, setMultipleValues] = React.useState<{ label: string; value: string }[]>([])
 
@@ -41,14 +39,7 @@ export default function Page() {
 				options={processors}
 				value={singleValue}
 				setValue={setSingleValue}
-				onChange={value => {
-					if (value !== null) {
-						router.push(`${pathname}?value=${value.value}`)
-						// alert(value.value)
-					} else {
-						router.push(`${pathname}`)
-					}
-				}}
+				onChange={value => alert(value?.label)}
 				placeholder="Виберіть процесор"
 			/>
 			<Combobox
@@ -60,10 +51,10 @@ export default function Page() {
 			/>
 
 			<div>Single combobox: {(singleValue?.label, singleValue?.value)}</div>
-			<div>
+			<div className="flex flex-col">
 				Single combobox:{' '}
 				{multipleValues?.map((value, index) => (
-					<div key={index}>
+					<div key={index} className="flex flex-col border p-4 rounded">
 						<span>{value.label}</span>
 						<span>{value.value}</span>
 					</div>
