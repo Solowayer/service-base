@@ -71,7 +71,7 @@ function ProfileForm() {
 							<FormMessage />
 						</FormItem>
 					)}
-				/>{' '}
+				/>
 				<FormField
 					control={form.control}
 					name="memory"

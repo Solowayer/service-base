@@ -2,7 +2,6 @@
 
 import { Shell } from '@/components/shells/shell'
 import { Combobox } from '@/components/ui/combobox'
-import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
 
 const processors = [
