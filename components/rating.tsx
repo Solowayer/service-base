@@ -18,16 +18,10 @@ interface RatingControlsProps extends RatingStyles {
 	onChange?: (value: number) => void
 }
 
-export function Rating({
-	count = 5,
-	readonly,
-	ratingValue,
-	onChange,
-	containerStyle,
-	itemStyle,
-	defaultStarStyle,
-	activeStarStyle
-}: RatingControlsProps) {
+const Rating = React.forwardRef<HTMLUListElement, RatingControlsProps>(function Rating(
+	{ count = 5, readonly, ratingValue, onChange, containerStyle, itemStyle, defaultStarStyle, activeStarStyle },
+	ref
+) {
 	const [hoverValue, setHoverValue] = React.useState<number | undefined>(undefined)
 	const [value, setValue] = React.useState(ratingValue ?? 0)
 
@@ -43,9 +37,12 @@ export function Rating({
 
 	const handleRating = (index: number) => {
 		if (readonly) return
-		setValue(index + 1)
+
+		const newValue = Math.max(0, Math.min(index + 1, count))
+
+		setValue(newValue)
 		if (onChange) {
-			onChange(index + 1)
+			onChange(newValue)
 		}
 	}
 
@@ -68,5 +65,13 @@ export function Rating({
 		)
 	})
 
-	return <ul className={cn('flex', containerStyle)}>{stars}</ul>
-}
+	return (
+		<ul ref={ref} className={cn('flex', containerStyle)}>
+			{stars}
+		</ul>
+	)
+})
+
+Rating.displayName = 'Rating'
+
+export { Rating }
