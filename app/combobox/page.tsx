@@ -50,7 +50,7 @@ export default function Page() {
 			/>
 
 			<div>Single combobox: {(singleValue?.label, singleValue?.value)}</div>
-			<div className="flex flex-col">
+			<div className="flex flex-col gap-4">
 				Single combobox:{' '}
 				{multipleValues?.map((value, index) => (
 					<div key={index} className="flex flex-col border p-4 rounded">

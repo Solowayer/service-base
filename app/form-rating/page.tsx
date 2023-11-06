@@ -13,9 +13,10 @@ import { Rating } from '@/components/rating'
 const FormSchema = z.object({
 	rating: z
 		.number()
+		.int()
 		.min(1, { message: 'Вкажіть рейтинг від 1 до 5' })
 		.max(5, { message: 'Вкажіть рейтинг від 1 до 5' }),
-	text: z.string().trim().min(1, {
+	text: z.string().trim().min(2, {
 		message: 'Напишіть щось пліз'
 	})
 })
